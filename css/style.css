@@ -1,0 +1,129 @@
+:root {
+    --bg: #0a0a0a;
+    --white: #ffffff;
+    --gray: #888;
+    --font-serif: 'Bodoni Moda', serif;
+    --font-sans: 'Montserrat', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg);
+    color: var(--white);
+    font-family: var(--font-sans);
+    overflow: hidden; /* Evitamos scroll tradicional para la experiencia inmersiva */
+}
+
+/* Navegación Minimalista Flotante */
+.main-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 60px;
+    z-index: 100;
+}
+
+.brand {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    letter-spacing: 8px;
+    font-weight: 700;
+}
+
+.main-nav nav a {
+    color: var(--white);
+    text-decoration: none;
+    margin-left: 30px;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+.main-nav nav a:hover { opacity: 1; }
+
+/* El Escenario (Wrapper) */
+.staged-wrapper {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.panel {
+    position: relative;
+    flex: 1; /* Todas las columnas miden igual al inicio */
+    display: flex;
+    align-items: flex-end;
+    padding: 60px 30px;
+    cursor: pointer;
+    transition: flex 0.8s cubic-bezier(0.05, 0.61, 0.41, 0.95), filter 0.5s;
+    filter: grayscale(100%) brightness(0.4);
+    background-image: var(--img);
+    background-size: cover;
+    background-position: center;
+}
+
+/* Efecto Expansivo */
+.panel:hover {
+    flex: 3; /* La columna se expande */
+    filter: grayscale(0%) brightness(0.8);
+}
+
+.panel::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+}
+
+.panel-content {
+    position: relative;
+    z-index: 2;
+    transform: translateY(20px);
+    transition: 0.6s ease;
+    opacity: 0.4;
+}
+
+.panel:hover .panel-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.director-role {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--gray);
+    margin-bottom: 10px;
+}
+
+.director-name {
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 4vw, 3.5rem);
+    line-height: 0.9;
+    text-transform: uppercase;
+}
+
+.scroll-indicator {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.6rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0.5;
+}
+
+/* Responsivo: De vertical a horizontal */
+@media (max-width: 768px) {
+    .staged-wrapper { flex-direction: column; }
+    .panel { padding: 20px; }
+    .panel:hover { flex: 5; }
+    .main-nav { padding: 20px; }
+}
