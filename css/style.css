@@ -1,6 +1,7 @@
 :root {
     --bg: #0a0a0a;
-    --white: #ffffff;
+    --white: #e0e0e0;
+    --accent: #d4af37;
     --gray: #888;
     --font-serif: 'Bodoni Moda', serif;
     --font-sans: 'Montserrat', sans-serif;
@@ -12,118 +13,173 @@ body {
     background-color: var(--bg);
     color: var(--white);
     font-family: var(--font-sans);
-    overflow: hidden; /* Evitamos scroll tradicional para la experiencia inmersiva */
+    overflow-x: hidden;
 }
 
-/* Navegación Minimalista Flotante */
+/* --- ESTILOS GENERALES (Igual que antes sin el grano) --- */
 .main-nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 40px 60px;
-    z-index: 100;
+    position: fixed; top: 0; width: 100%;
+    display: flex; justify-content: space-between;
+    padding: 40px 60px; z-index: 100;
+    mix-blend-mode: difference;
 }
-
-.brand {
-    font-family: var(--font-serif);
-    font-size: 1.5rem;
-    letter-spacing: 8px;
-    font-weight: 700;
-}
-
+.brand { font-family: var(--font-serif); font-size: 1.5rem; letter-spacing: 8px; font-weight: 700; }
 .main-nav nav a {
-    color: var(--white);
-    text-decoration: none;
-    margin-left: 30px;
-    font-size: 0.7rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    opacity: 0.6;
-    transition: 0.3s;
+    color: #fff; text-decoration: none; margin-left: 30px;
+    font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;
+    opacity: 0.6; transition: 0.3s;
 }
+.main-nav nav a:hover { opacity: 1; color: var(--accent); }
 
-.main-nav nav a:hover { opacity: 1; }
-
-/* El Escenario (Wrapper) */
-.staged-wrapper {
-    display: flex;
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-}
-
+/* HERO Y PANELES */
+.staged-wrapper { display: flex; height: 100vh; width: 100%; }
 .panel {
-    position: relative;
-    flex: 1; /* Todas las columnas miden igual al inicio */
-    display: flex;
-    align-items: flex-end;
-    padding: 60px 30px;
-    cursor: pointer;
+    position: relative; flex: 1; display: flex; align-items: flex-end;
+    padding: 60px 30px; cursor: pointer;
     transition: flex 0.8s cubic-bezier(0.05, 0.61, 0.41, 0.95), filter 0.5s;
     filter: grayscale(100%) brightness(0.4);
-    background-image: var(--img);
-    background-size: cover;
-    background-position: center;
+    background-image: var(--img); background-size: cover; background-position: center;
+    border-right: 1px solid rgba(255,255,255,0.1);
 }
-
-/* Efecto Expansivo */
-.panel:hover {
-    flex: 3; /* La columna se expande */
-    filter: grayscale(0%) brightness(0.8);
-}
-
-.panel::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
-}
-
-.panel-content {
-    position: relative;
-    z-index: 2;
-    transform: translateY(20px);
-    transition: 0.6s ease;
-    opacity: 0.4;
-}
-
-.panel:hover .panel-content {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-.director-role {
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    color: var(--gray);
-    margin-bottom: 10px;
-}
-
-.director-name {
-    font-family: var(--font-serif);
-    font-size: clamp(1.5rem, 4vw, 3.5rem);
-    line-height: 0.9;
-    text-transform: uppercase;
-}
+.panel:hover { flex: 3; filter: grayscale(0%) brightness(0.9); }
+.panel-content { position: relative; z-index: 2; transform: translateY(20px); transition: 0.6s ease; opacity: 0; }
+.panel:hover .panel-content { transform: translateY(0); opacity: 1; }
+.director-role { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 4px; color: #ccc; margin-bottom: 10px; }
+.director-name { font-family: var(--font-serif); font-size: clamp(2rem, 4vw, 3.5rem); line-height: 0.9; text-transform: uppercase; }
 
 .scroll-indicator {
-    position: fixed;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 0.6rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    opacity: 0.5;
+    position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+    font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase;
+    opacity: 0.6; cursor: pointer; animation: bounce 2s infinite; z-index: 50;
+}
+@keyframes bounce { 0%, 100% {transform: translateX(-50%) translateY(0);} 50% {transform: translateX(-50%) translateY(-10px);} }
+
+/* SECCIONES TEXTO */
+.content-section { min-height: 80vh; display: flex; align-items: center; justify-content: center; padding: 100px 20px; text-align: center; }
+.text-container { max-width: 800px; }
+.section-label { display: block; font-size: 0.7rem; letter-spacing: 4px; color: var(--accent); margin-bottom: 2rem; text-transform: uppercase; }
+.content-section h3 { font-family: var(--font-serif); font-size: clamp(2rem, 5vw, 4rem); margin-bottom: 2rem; font-weight: 400; }
+.content-section p { font-size: 1.1rem; line-height: 1.8; color: #aaa; font-weight: 300; }
+
+.quiz-section {
+    min-height: 70vh; display: flex; align-items: center; justify-content: center;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+    border-top: 1px solid #222;
+}
+.quiz-card { text-align: center; border: 1px solid #333; padding: 60px; max-width: 600px; background: rgba(255,255,255,0.02); }
+.quiz-card h2 { font-family: var(--font-serif); font-size: 3rem; margin-bottom: 1rem; }
+.btn-quiz {
+    padding: 15px 40px; background: transparent; border: 1px solid var(--white); color: var(--white);
+    font-family: var(--font-sans); text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: 0.4s;
+}
+.btn-quiz:hover { background: var(--white); color: var(--bg); }
+
+.reveal-on-scroll { opacity: 0; transform: translateY(50px); transition: all 1s ease; }
+.reveal-on-scroll.active { opacity: 1; transform: translateY(0); }
+
+/* --- MODAL QUIZ ESTILOS --- */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px); 
+    z-index: 2000;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s;
 }
 
-/* Responsivo: De vertical a horizontal */
+.modal-overlay.open { opacity: 1; visibility: visible; }
+
+.modal-content {
+    background: #111;
+    border: 1px solid #333;
+    padding: 40px;
+    width: 90%; max-width: 600px;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    transform: scale(0.95); transition: transform 0.4s;
+}
+
+.modal-overlay.open .modal-content { transform: scale(1); }
+
+.close-btn {
+    position: absolute; top: 20px; right: 20px;
+    background: none; border: none; color: #fff;
+    font-size: 2rem; cursor: pointer;
+}
+
+.quiz-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+.progress-bar { width: 100px; height: 2px; background: #333; }
+#progress-fill { height: 100%; background: var(--accent); width: 0%; transition: width 0.3s; }
+
+#question-text {
+    font-family: var(--font-serif); font-size: 1.8rem;
+    margin-bottom: 40px; text-align: center;
+}
+
+.answers-grid { display: grid; gap: 15px; }
+
+.answer-btn {
+    background: #1a1a1a; color: #ccc; border: 1px solid #333;
+    padding: 20px; text-align: left; cursor: pointer;
+    transition: 0.3s; font-family: var(--font-sans);
+    font-size: 0.9rem;
+}
+
+.answer-btn:hover { border-color: var(--accent); color: var(--white); background: #222; }
+
+/* Responsivo */
 @media (max-width: 768px) {
     .staged-wrapper { flex-direction: column; }
-    .panel { padding: 20px; }
+    .panel { border-bottom: 1px solid rgba(255,255,255,0.1); border-right: none; }
     .panel:hover { flex: 5; }
-    .main-nav { padding: 20px; }
+    .quiz-card, .modal-content { padding: 30px; margin: 20px; }
 }
+
+/* --- 1. PRELOADER --- */
+#preloader {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #000; z-index: 9999;
+    display: flex; justify-content: center; align-items: center;
+    transition: opacity 0.8s ease, visibility 0.8s;
+}
+.loader-content { text-align: center; }
+.brand-loader {
+    display: block; font-family: var(--font-serif); font-size: 3rem;
+    letter-spacing: 10px; animation: pulse 2s infinite; color: var(--accent);
+}
+.loading-text {
+    font-size: 0.8rem; letter-spacing: 3px; color: #555; text-transform: uppercase; margin-top: 15px; display: block;
+}
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+.loaded #preloader { opacity: 0; visibility: hidden; }
+
+
+/* --- 2. TICKER / MARQUESINA --- */
+.ticker-wrap {
+    width: 100%; overflow: hidden; background: var(--bg);
+    padding: 20px 0; border-top: 1px solid #222; border-bottom: 1px solid #222;
+    white-space: nowrap;
+}
+.ticker { display: inline-block; animation: ticker 30s linear infinite; }
+.ticker-item {
+    display: inline-block; padding-right: 50px;
+    font-family: var(--font-sans); font-size: 0.9rem; letter-spacing: 4px;
+    color: #444; text-transform: uppercase;
+}
+@keyframes ticker { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-50%, 0, 0); } }
+
+
+/* --- 3. ESTILOS DEL RESULTADO DEL QUIZ --- */
+.result-container { text-align: center; animation: fadeIn 0.8s ease; }
+.result-img-wrapper {
+    width: 150px; height: 150px; margin: 0 auto 20px;
+    border-radius: 50%; overflow: hidden;
+    border: 2px solid var(--accent);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+}
+.result-img { width: 100%; height: 100%; object-fit: cover; }
+.result-title { font-family: var(--font-serif); font-size: 2.5rem; color: var(--white); margin-bottom: 10px; }
+.result-desc { color: #888; margin-bottom: 30px; font-size: 0.9rem; line-height: 1.6; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
