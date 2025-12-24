@@ -1,34 +1,50 @@
-document.addEventListener('DOMContentLoaded', () => {
+// 1. LÓGICA DEL PRELOADER 
+$(window).on('load', function() {
+    $('body').addClass('loaded');
+});
 
-    // ==========================================
-    // 1. PRELOADER & ANIMACIONES INICIALES
-    // ==========================================
-    window.onload = () => {
-        document.body.classList.add('loaded');
-    };
+setTimeout(function() {
+    if (!$('body').hasClass('loaded')) {
+        console.warn("Forzando cierre del preloader por tiempo de espera...");
+        $('body').addClass('loaded');
+    }
+}, 3000);
 
-    const panels = document.querySelectorAll('.panel');
-    panels.forEach((panel, index) => {
-        panel.style.opacity = "0";
-        panel.style.transform = "translateY(50px)";
-        setTimeout(() => {
-            panel.style.transition = "flex 0.8s cubic-bezier(0.05, 0.61, 0.41, 0.95), filter 0.5s, opacity 1s ease, transform 1s ease";
-            panel.style.opacity = "1";
-            panel.style.transform = "translateY(0)";
+
+// 2. RESTO DE LA LÓGICA 
+$(document).ready(function() {
+
+    // --- ANIMACIÓN DE PANELES (HERO) ---
+    $('.panel').each(function(index) {
+        var $panel = $(this);
+        $panel.css({
+            'opacity': 0,
+            'transform': 'translateY(50px)'
+        });
+
+        setTimeout(function() {
+            $panel.css({
+                'transition': 'flex 0.8s cubic-bezier(0.05, 0.61, 0.41, 0.95), filter 0.5s, opacity 1s ease, transform 1s ease',
+                'opacity': 1,
+                'transform': 'translateY(0)'
+            });
         }, 200 * index);
     });
 
+    // --- INTERSECTION OBSERVER (REVEAL ON SCROLL) ---
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('active');
+            if (entry.isIntersecting) {
+                $(entry.target).addClass('active');
+            }
         });
     }, { threshold: 0.2 });
-    document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
 
+    $('.reveal-on-scroll').each(function() {
+        observer.observe(this);
+    });
 
-    // ==========================================
-    // 2. CONFIGURACIÓN DEL QUIZ (DATOS)
-    // ==========================================
+    // --- DATOS DEL QUIZ ---
     const questions = [
         {
             text: "¿Qué elemento no puede faltar en tu habitación?",
@@ -86,71 +102,55 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-
-    // ==========================================
-    // 3. VARIABLES Y REFERENCIAS DOM
-    // ==========================================
+    // --- VARIABLES DE ESTADO ---
     let currentQuestionIndex = 0;
     let scores = { coppola: 0, anderson: 0, villeneuve: 0, amenabar: 0 };
 
-    const modal = document.getElementById('quiz-modal');
-    const quizBody = document.getElementById('quiz-body'); 
-    const openBtn = document.getElementById('open-quiz');
-    const closeBtn = document.getElementById('close-quiz');
-    
-    let questionText = document.getElementById('question-text');
-    let answersContainer = document.getElementById('answers-container');
-    let progressFill = document.getElementById('progress-fill');
-    let counter = document.getElementById('question-counter');
+    // --- LÓGICA DEL QUIZ (JQUERY) ---
 
-
-    // ==========================================
-    // 4. FUNCIONES DEL QUIZ
-    // ==========================================
-
-    function openModal() {
-        modal.classList.add('open');
+    $('#open-quiz').on('click', function() {
+        $('#quiz-modal').addClass('open');
         currentQuestionIndex = 0;
         scores = { coppola: 0, anderson: 0, villeneuve: 0, amenabar: 0 };
-        
-        refreshDomRefs();
         loadQuestion();
-    }
+    });
 
-    function closeModal() {
-        modal.classList.remove('open');
-    }
+    $('#close-quiz').on('click', function() {
+        $('#quiz-modal').removeClass('open');
+    });
 
-    function refreshDomRefs() {
-        questionText = document.getElementById('question-text');
-        answersContainer = document.getElementById('answers-container');
-        progressFill = document.getElementById('progress-fill');
-        counter = document.getElementById('question-counter');
-    }
+    $('#quiz-modal').on('click', function(e) {
+        if ($(e.target).is('#quiz-modal')) {
+            $(this).removeClass('open');
+        }
+    });
 
     function loadQuestion() {
         const currentQ = questions[currentQuestionIndex];
         
-        if(questionText) questionText.textContent = currentQ.text;
-        if(counter) counter.textContent = `Pregunta ${currentQuestionIndex + 1}/${questions.length}`;
-        if(progressFill) progressFill.style.width = `${((currentQuestionIndex) / questions.length) * 100}%`;
+        $('#question-text').text(currentQ.text);
+        $('#question-counter').text(`Pregunta ${currentQuestionIndex + 1}/${questions.length}`);
+        
+        const percentage = ((currentQuestionIndex) / questions.length) * 100;
+        $('#progress-fill').css('width', percentage + '%');
 
-        if(answersContainer) {
-            answersContainer.innerHTML = '';
-            currentQ.answers.forEach(answer => {
-                const btn = document.createElement('button');
-                btn.classList.add('answer-btn');
-                btn.textContent = answer.text;
-                btn.addEventListener('click', () => selectAnswer(answer.type));
-                answersContainer.appendChild(btn);
-            });
-        }
+        const $answersContainer = $('#answers-container');
+        $answersContainer.empty();
+
+        $.each(currentQ.answers, function(index, answer) {
+            const $btn = $('<button>')
+                .addClass('answer-btn')
+                .text(answer.text)
+                .on('click', function() {
+                    selectAnswer(answer.type);
+                });
+            $answersContainer.append($btn);
+        });
     }
 
     function selectAnswer(type) {
         scores[type]++;
         currentQuestionIndex++;
-
         if (currentQuestionIndex < questions.length) {
             loadQuestion();
         } else {
@@ -158,14 +158,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- FUNCIÓN PRINCIPAL DE RESULTADO (SOLO UNA) ---
     function finishQuiz() {
-        // 1. Calcular ganador
         const winnerKey = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
         const winnerData = directorsData[winnerKey];
 
-        // 2. Inyectar HTML del Resultado
-        quizBody.innerHTML = `
+        $('#progress-fill').css('width', '100%');
+
+        const resultHTML = `
             <div class="result-container">
                 <div class="result-img-wrapper">
                     <img src="${winnerData.img}" alt="${winnerData.name}" class="result-img">
@@ -184,22 +183,12 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
 
-        // 3. Lógica para el botón "Repetir Test"
-        document.getElementById('restart-quiz').addEventListener('click', () => {
-            window.location.reload(); 
+        $('#quiz-body').html(resultHTML);
+
+        $('#restart-quiz').on('click', function() {
+            window.location.reload();
         });
     }
 
-
-    // ==========================================
-    // 5. EVENT LISTENERS
-    // ==========================================
-    if(openBtn) openBtn.addEventListener('click', openModal);
-    if(closeBtn) closeBtn.addEventListener('click', closeModal);
-    
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-    });
-
-    console.log("Sistema de Quiz cargado correctamente.");
+    console.log("Sistema jQuery cargado correctamente.");
 });

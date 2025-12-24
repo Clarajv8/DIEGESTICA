@@ -16,7 +16,7 @@ body {
     overflow-x: hidden;
 }
 
-/* --- ESTILOS GENERALES (Igual que antes sin el grano) --- */
+/* --- ESTILOS GENERALES --- */
 .main-nav {
     position: fixed; top: 0; width: 100%;
     display: flex; justify-content: space-between;
@@ -128,7 +128,6 @@ body {
 
 .answer-btn:hover { border-color: var(--accent); color: var(--white); background: #222; }
 
-/* Responsivo */
 @media (max-width: 768px) {
     .staged-wrapper { flex-direction: column; }
     .panel { border-bottom: 1px solid rgba(255,255,255,0.1); border-right: none; }
