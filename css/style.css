@@ -182,3 +182,232 @@ body {
 .result-desc { color: #888; margin-bottom: 30px; font-size: 0.9rem; line-height: 1.6; }
 
 @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+
+
+
+
+
+
+/* =========================================
+   === WES ANDERSON PAGE STYLES START ===
+   ========================================= */
+
+.wes-anderson-page {
+    --wes-bg: #FAD0C9;
+    --wes-bg-secondary: #FBF6E9; 
+    --wes-text: #3E2723;
+    --wes-red: #D9534F;
+    --wes-blue: #5BC0DE;
+    --wes-mustard: #F0AD4E;
+    --font-wes-title: 'Montserrat', sans-serif; 
+
+    background-color: var(--wes-bg);
+    color: var(--wes-text);
+    overflow-x: hidden;
+}
+
+.wes-nav {
+    mix-blend-mode: normal !important;
+    background: transparent;
+    border-bottom: 2px solid rgba(62, 39, 35, 0.1);
+}
+.wes-nav .brand a, .wes-nav nav a {
+    color: var(--wes-text) !important;
+    opacity: 1 !important;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.wes-hero {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 100px;
+    border-bottom: 4px double var(--wes-text); 
+}
+
+.wes-hero-content { max-width: 600px; margin-bottom: 40px; z-index: 2; }
+
+.director-label {
+    font-family: var(--font-wes-title); font-size: 0.8rem; letter-spacing: 4px;
+    text-transform: uppercase; color: var(--wes-red); font-weight: 600;
+}
+
+.director-title {
+    font-family: var(--font-serif); font-size: 4.5rem; color: var(--wes-text);
+    text-transform: uppercase; letter-spacing: 2px; margin: 20px 0;
+}
+
+.director-quote {
+    font-family: var(--font-serif); font-style: italic; font-size: 1.2rem; color: #6D4C41;
+}
+
+.hero-image-container {
+    position: relative; width: 80%; max-width: 900px; height: 400px;
+    border: 8px solid var(--wes-bg-secondary);
+    box-shadow: 0 10px 30px rgba(62, 39, 35, 0.2);
+    overflow: hidden;
+}
+
+.wes-main-img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+
+.symmetry-line {
+    position: absolute; top: 0; left: 50%; width: 2px; height: 100%;
+    background: var(--wes-red); opacity: 0.3; z-index: 10;
+}
+
+.wes-section { padding: 80px 20px; }
+.pastel-bg { background-color: var(--wes-bg-secondary); border-top: 2px solid #fff; border-bottom: 2px solid #fff; }
+.wes-container { max-width: 900px; margin: 0 auto; }
+
+.wes-heading {
+    font-family: var(--font-wes-title); font-size: 1.5rem; text-transform: uppercase;
+    letter-spacing: 3px; color: var(--wes-text); margin-bottom: 40px;
+    border-bottom: 3px solid var(--wes-mustard); display: inline-block; padding-bottom: 10px;
+}
+.wes-heading.centered { display: block; text-align: center; border-bottom: none; position: relative;}
+.wes-heading.centered::after { content:''; display: block; width: 60px; height: 3px; background: var(--wes-mustard); margin: 15px auto 0;}
+
+.two-column-grid { display: flex; gap: 40px; align-items: center; }
+.text-col p { margin-bottom: 20px; line-height: 1.7; }
+.text-col strong { color: var(--wes-red); }
+.framed-img { width: 100%; border: 5px solid #fff; box-shadow: 5px 5px 0px var(--wes-mustard); }
+
+.three-column-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+
+.wes-card {
+    background: #fff; padding: 30px; text-align: center;
+    border: 2px solid var(--wes-text); border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+.wes-card:hover { transform: translateY(-10px); }
+
+.card-icon {
+    width: 50px; height: 50px; margin: 0 auto 20px;
+    color: #fff; font-weight: bold; font-size: 1.2rem;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%; border: 3px solid var(--wes-text);
+}
+
+.anime-pop-in { animation: bouncyReveal 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; opacity: 0; }
+.anime-slide-up { animation: slideUpCamp 1s ease-out 0.3s forwards; opacity: 0; transform: translateY(50px); }
+
+@keyframes bouncyReveal { 0%{opacity:0; transform: scale(0.8);} 100%{opacity:1; transform: scale(1);} }
+@keyframes slideUpCamp { 100%{opacity:1; transform: translateY(0);} }
+
+.reveal-wes { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+.reveal-wes.active { opacity: 1; transform: translateY(0); }
+
+.wes-footer { text-align: center; padding: 60px 20px; background: var(--wes-bg); }
+.back-home-btn {
+    text-decoration: none; color: var(--wes-text); font-weight: 600; text-transform: uppercase;
+    letter-spacing: 2px; border: 2px solid var(--wes-text); padding: 15px 30px;
+    transition: 0.3s;
+}
+.back-home-btn:hover { background: var(--wes-text); color: var(--wes-bg); }
+
+@media (max-width: 768px) {
+    .two-column-grid, .three-column-grid { grid-template-columns: 1fr; flex-direction: column; }
+    .hero-image-container { height: 250px; width: 100%; }
+    .director-title { font-size: 3rem; }
+}
+
+.section-subtitle {
+    text-align: center; font-family: var(--font-serif); font-style: italic;
+    color: var(--wes-red); margin-top: -30px; margin-bottom: 40px;
+}
+
+.props-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px; text-align: center;
+}
+
+.prop-card {
+    background: #fff; padding: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: transform 0.4s ease;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+.prop-card:hover { transform: translateY(-10px) rotate(2deg); }
+
+.prop-image {
+    width: 100%; height: 200px; overflow: hidden; margin-bottom: 15px;
+    border: 4px solid var(--wes-bg-secondary);
+}
+.prop-image img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+.prop-card:hover img { transform: scale(1.1); }
+
+.prop-card h4 {
+    font-family: var(--font-wes-title); font-size: 1rem; text-transform: uppercase;
+    color: var(--wes-text); margin-bottom: 5px; letter-spacing: 1px;
+}
+.prop-card span { font-family: var(--font-serif); font-size: 0.9rem; color: var(--wes-red); font-style: italic; }
+
+.palette-section { transition: background-color 0.5s ease; }
+
+.color-palette-container {
+    display: flex; height: 150px; width: 100%;
+    border: 5px solid #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-radius: 10px; overflow: hidden; cursor: pointer;
+}
+
+.color-strip {
+    flex: 1; display: flex; align-items: flex-end; justify-content: center;
+    padding-bottom: 20px; transition: flex 0.3s ease; position: relative;
+}
+.color-strip span {
+    font-family: var(--font-wes-title); font-size: 0.7rem; text-transform: uppercase;
+    letter-spacing: 2px; opacity: 0; transform: translateY(10px); transition: 0.3s;
+    background: rgba(255,255,255,0.8); padding: 5px 10px; border-radius: 20px; color: #000;
+}
+
+.color-strip:hover { flex: 2; }
+.color-strip:hover span { opacity: 1; transform: translateY(0); }
+
+#copy-feedback {
+    text-align: center; margin-top: 15px; font-family: var(--font-wes-title);
+    text-transform: uppercase; letter-spacing: 3px; color: var(--wes-text);
+    opacity: 0; transition: opacity 0.3s; font-weight: bold;
+}
+
+.ticket-section { background-image: radial-gradient(#d7ccc8 1px, transparent 1px); background-size: 20px 20px; }
+
+.ticket-scroller {
+    display: flex; gap: 30px; overflow-x: auto; padding: 20px 0 40px 0;
+    scrollbar-width: thin; scrollbar-color: var(--wes-red) transparent;
+}
+
+.movie-ticket {
+    flex: 0 0 220px; height: 320px;
+    background-color: #F8F1E5;
+    border: 2px dashed var(--wes-text);
+    position: relative;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; padding: 20px;
+    transition: 0.3s;
+    mask-image: radial-gradient(circle at 0 50%, transparent 10px, black 11px), radial-gradient(circle at 100% 50%, transparent 10px, black 11px);
+    -webkit-mask-image: radial-gradient(circle at 0 50%, transparent 10px, black 11px), radial-gradient(circle at 100% 50%, transparent 10px, black 11px);
+}
+
+.movie-ticket:hover { transform: rotate(-3deg) translateY(-10px); background-color: #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+.ticket-date {
+    font-size: 2.5rem; font-family: var(--font-serif); color: var(--wes-red); font-weight: bold;
+    border-bottom: 2px solid var(--wes-text); margin-bottom: 20px; width: 100%;
+}
+.ticket-title {
+    font-family: var(--font-wes-title); text-transform: uppercase; font-size: 1rem; letter-spacing: 2px;
+    line-height: 1.4; color: var(--wes-text); flex-grow: 1; display: flex; align-items: center;
+}
+.ticket-deco {
+    font-size: 0.6rem; letter-spacing: 4px; border-top: 1px solid var(--wes-text);
+    padding-top: 10px; width: 100%; opacity: 0.6;
+}
+
+/* =========================================
+   === WES ANDERSON PAGE STYLES END ===
+   ========================================= */

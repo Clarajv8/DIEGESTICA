@@ -190,5 +190,64 @@ $(document).ready(function() {
         });
     }
 
+/* =========================================
+       === WES ANDERSON PAGE JS (VERSIÓN JQUERY) ===
+       ========================================= */
+
+    if ($('.wes-anderson-page').length) {
+        console.log("Modo Wes Anderson: Activado (jQuery). Preparando simetría.");
+
+        const wesObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    $(entry.target).addClass('active');
+                    wesObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        $('.reveal-wes').each(function() {
+            wesObserver.observe(this);
+        });
+
+
+        // 2. INTERACCIÓN DE PALETA DE COLORES (THEME SWITCHER)
+        $('.color-strip').on('click', function() {
+            const $this = $(this);
+            const $wesRoot = $('.wes-anderson-page'); 
+            const $feedback = $('#copy-feedback');
+            const newBgColor = $this.attr('data-color');
+            const newTextColor = $this.attr('data-text-color');
+
+            navigator.clipboard.writeText(newBgColor);
+
+            $wesRoot.css('--wes-bg', newBgColor);
+            $wesRoot.css('--wes-text', newTextColor);
+
+            if (newTextColor === '#FFFFFF' || newTextColor === '#FBF6E9') {
+                $wesRoot.css('--wes-bg-secondary', 'rgba(0,0,0,0.2)');
+            } else {
+                $wesRoot.css('--wes-bg-secondary', '#FBF6E9');
+            }
+
+            $feedback
+                .text(`Atmósfera reescrita: ${newBgColor}`)
+                .css({
+                    'color': newTextColor,
+                    'opacity': 1
+                });
+
+            $('body').css('transition', 'background-color 0.5s ease, color 0.5s ease');
+
+            setTimeout(function() {
+                $feedback.css('opacity', 0);
+            }, 2000);
+        });
+    }
+
+    /* =========================================
+       === WES ANDERSON PAGE JS END ===
+       ========================================= */
+
     console.log("Sistema jQuery cargado correctamente.");
 });
