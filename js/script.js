@@ -191,7 +191,7 @@ $(document).ready(function() {
     }
 
 /* =========================================
-       === WES ANDERSON PAGE JS (VERSIÓN JQUERY) ===
+       === WES ANDERSON PAGE JS ===
        ========================================= */
 
     if ($('.wes-anderson-page').length) {
