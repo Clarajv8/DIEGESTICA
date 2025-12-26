@@ -215,7 +215,7 @@ body {
     border-bottom: 2px solid rgba(62, 39, 35, 0.1);
 }
 .wes-nav .brand a, .wes-nav nav a {
-    color: var(--wes-text) !important;
+    color: var(--wes-static-brown) !important;
     opacity: 1 !important;
     text-decoration: none;
     font-weight: 600;
@@ -241,7 +241,7 @@ body {
 }
 
 .director-title {
-    font-family: var(--font-serif); font-size: 4.5rem; color: var(--wes-text);
+    font-family: var(--font-serif); font-size: 4.5rem; color: var(--wes-static-brown);
     text-transform: uppercase; letter-spacing: 2px; margin: 20px 0;
 }
 
@@ -270,7 +270,7 @@ body {
 
 .wes-heading {
     font-family: var(--font-wes-title); font-size: 1.5rem; text-transform: uppercase;
-    letter-spacing: 3px; color: var(--wes-text); margin-bottom: 40px;
+    letter-spacing: 3px; color: var(--wes-static-brown); margin-bottom: 40px;
     border-bottom: 3px solid var(--wes-mustard); display: inline-block; padding-bottom: 10px;
 }
 .wes-heading.centered { display: block; text-align: center; border-bottom: none; position: relative;}
