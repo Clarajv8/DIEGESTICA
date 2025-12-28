@@ -196,7 +196,6 @@ body {
 .wes-anderson-page {
     --wes-bg: #FAD0C9;
     --wes-bg-secondary: #FBF6E9; 
-    --wes-frame: #5D4367;
     --wes-text: #3E2723;
     --wes-red: #D9534F;
     --wes-blue: #5BC0DE;
@@ -205,53 +204,16 @@ body {
     --wes-static-cream: #FBF6E9; 
     --font-wes-title: 'Montserrat', sans-serif; 
 
-    background-color: var(--wes-frame);
+    background-color: var(--wes-bg);
     color: var(--wes-text);
     overflow-x: hidden;
-    
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.12'/%3E%3C/svg%3E");
-}
-
-.wes-anderson-page main {
-    background-color: var(--wes-bg);
-    margin: 5rem 15rem; 
-    min-height: 85vh;
-    border: 6px double var(--wes-frame);
-    box-shadow: 0 0 60px rgba(0,0,0,0.6); 
-    position: relative;
-    z-index: 10;
-    transition: margin 0.5s ease;
-}
-
-@media (max-width: 1400px) {
-    .wes-anderson-page main {
-        margin: 4rem 8rem;
-    }
-}
-
-@media (max-width: 1024px) {
-    .wes-anderson-page main {
-        margin: 3rem 4rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .wes-anderson-page main {
-        margin: 20px 15px; 
-        border-width: 4px; 
-    }
 }
 
 .wes-nav {
-    position: absolute; 
-    top: 30px;         
-    left: 30px;
-    width: calc(100% - 60px); 
     mix-blend-mode: normal !important;
-    z-index: 100;
-    padding: 20px 40px;
+    background: transparent;
+    border-bottom: 2px solid rgba(62, 39, 35, 0.1);
 }
-
 .wes-nav .brand a, .wes-nav nav a {
     color: var(--wes-static-brown) !important;
     opacity: 1 !important;
@@ -279,14 +241,8 @@ body {
 }
 
 .director-title {
-    font-family: 'Cinzel', serif; 
-    font-size: 4.5rem; 
-    color: var(--wes-text);
-    text-transform: uppercase; 
-    letter-spacing: 5px; 
-    margin: 20px 0;
-    font-weight: 900;
-    text-shadow: 5px 5px 0px rgba(62, 39, 35, 0.3);
+    font-family: var(--font-serif); font-size: 4.5rem; color: var(--wes-static-brown);
+    text-transform: uppercase; letter-spacing: 2px; margin: 20px 0;
 }
 
 .director-quote {
