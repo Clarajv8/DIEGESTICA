@@ -11,25 +11,6 @@ setTimeout(function() {
 }, 3000);
 
 
-// 2. RESTO DE LA LÓGICA 
-$(document).ready(function() {
-
-    // --- ANIMACIÓN DE PANELES (HERO) ---
-    $('.panel').each(function(index) {
-        var $panel = $(this);
-        $panel.css({
-            'opacity': 0,
-            'transform': 'translateY(50px)'
-        });
-
-        setTimeout(function() {
-            $panel.css({
-                'transition': 'flex 0.8s cubic-bezier(0.05, 0.61, 0.41, 0.95), filter 0.5s, opacity 1s ease, transform 1s ease',
-                'opacity': 1,
-                'transform': 'translateY(0)'
-            });
-        }, 200 * index);
-    });
 
     // --- INTERSECTION OBSERVER (REVEAL ON SCROLL) ---
     const observer = new IntersectionObserver((entries) => {
