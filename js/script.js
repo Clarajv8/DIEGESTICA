@@ -252,7 +252,45 @@ $(document).ready(function() {
        === WES ANDERSON PAGE JS END ===
        ========================================= */
 
+    // VILLENEUVE
+    if ($('.villeneuve-page').length) {
+        console.log("Modo Denis Villeneuve: Activado. Preparando escala brutalista.");
 
+        const dvObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        $('.reveal-dv').each(function() {
+            dvObserver.observe(this);
+        });
+
+        // Interacción de paleta de colores (similar a Wes)
+        $('.color-strip').on('click', function() {
+            const $strip = $(this);
+            const bgColor = $strip.data('color');
+            const textColor = $strip.data('text-color');
+            const accentColor = $strip.data('accent');
+
+            // Copiar al portapapeles
+            navigator.clipboard.writeText(bgColor).then(function() {
+                console.log('Color copiado: ' + bgColor);
+            });
+
+            $('#copy-feedback').text('¡Color Copiado!').fadeIn().delay(2000).fadeOut();
+
+            // Cambiar colores dinámicamente usando variables CSS
+            $('body').css('--dv-bg', bgColor);
+            $('body').css('--dv-text', textColor);
+            $('body').css('--dv-primary', accentColor);
+
+            $('#copy-feedback').text('¡Atmósfera Actualizada!').fadeIn().delay(2000).fadeOut();
+        });
+    }
+    // FIN DE VILLENEUVE
 
     //    AMENABAR
     // AMENABAR PELIS
@@ -324,6 +362,41 @@ $(document).ready(function() {
     }
 
     // FIN DE AMENABAR
+
+    // VILLENEUVE
+    if ($('.villeneuve-page').length) {
+        console.log("Modo Denis Villeneuve: Activado. Preparando escala brutalista.");
+
+        const dvObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        $('.reveal-dv').each(function() {
+            dvObserver.observe(this);
+        });
+
+        // Interacción del slider de escala
+        $('#scale-range').on('input', function() {
+            const value = $(this).val();
+            $('#scale-value').text(value);
+            // Aquí podrías añadir efectos visuales, como cambiar el tamaño de elementos
+            $('.dv-interactive-container').css('transform', `scale(${1 + value / 100})`);
+        });
+
+        // Hover en el hero para cambiar imagen
+        $('.dv-hero-content').hover(function() {
+            $('.dv-bg--base').stop().animate({ opacity: 0 }, 500);
+            $('.dv-bg--hover').stop().animate({ opacity: 1 }, 500);
+        }, function() {
+            $('.dv-bg--base').stop().animate({ opacity: 1 }, 500);
+            $('.dv-bg--hover').stop().animate({ opacity: 0 }, 500);
+        });
+    }
+    // FIN DE VILLENEUVE
 
     console.log("Sistema jQuery cargado correctamente.");
 });
