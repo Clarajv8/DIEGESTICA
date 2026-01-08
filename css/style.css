@@ -11,6 +11,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -539,21 +540,24 @@ body {
 }
 
 .wes-nav nav a.nav-btn {
+    display: inline-block;
     font-family: var(--font-wes-title);
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     letter-spacing: 2px;
     text-transform: uppercase;
     text-decoration: none;
-    color: var(--wes-static-brown) !important;
-    padding: 8px 15px;
-    border: 1px solid transparent;
-    transition: 0.3s all ease;
-    font-weight: 600;
+    color: var(--wes-static-brown);
+    padding: 10px 20px;
+
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    font-weight: 700;
 }
 
 .wes-nav nav a.nav-btn:hover {
-    border: 1px solid var(--wes-static-brown);
-    background-color: rgba(255,255,255,0.3);
+    transform: scale(1.1) translateY(-2px);
+    color: var(--wes-static-cream) !important; 
+    box-shadow: 0 5px 0px var(--wes-accent);
 }
 
 .wes-nav .brand a {
@@ -575,7 +579,6 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-top: 100px;
     border-bottom: 4px double var(--wes-text); 
     background-color: var(--wes-static-cream);
 }
@@ -725,6 +728,56 @@ body {
     transform: translateY(-10px);
 }
 
+.wes-slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slider-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 1.5s ease-in-out, transform 2s ease-out;
+    opacity: 0;
+    transform: scale(1.1);
+}
+
+.slider-img.active {
+    opacity: 1;
+    transform: scale(1); 
+    z-index: 1;
+}
+
+.symmetry-line {
+    z-index: 10 !important;
+}
+
+.wes-anderson-page, 
+.wes-anderson-page main,
+.wes-heading,
+.text-col strong,
+.framed-img,
+.director-title,
+.nav-btn,
+.wes-nav,
+.wes-footer,
+#copy-feedback {
+    transition: 
+        background-color 0.8s ease-in-out, 
+        color 0.8s ease-in-out, 
+        border-color 0.8s ease-in-out, 
+        box-shadow 0.8s ease-in-out,
+        text-shadow 0.8s ease-in-out;
+}
+
+.wes-nav {
+    transition: background-color 0.8s ease-in-out, backdrop-filter 0.8s ease-in-out;
+}
+
 .card-icon {
     width: 50px;
     height: 50px;
@@ -823,9 +876,8 @@ body {
 
 .props-grid {
     display: grid;
-    grid-template-columns:
-    repeat(auto-fit, minmax(280px, 1fr));
-    gap: 50px; 
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px; 
     padding: 20px;
 }
 
@@ -846,7 +898,6 @@ body {
 
 .prop-badge {
     position: absolute;
-    top: -15px;
     left: 50%;
     transform: translateX(-50%);
     background: var(--wes-static-brown);
@@ -860,9 +911,7 @@ body {
 }
 
 .prop-image-frame {
-    border: 1px solid #ddd;
     padding: 10px;
-    background: #f9f9f9;
     margin-bottom: 20px;
     position: relative;
     overflow: hidden;

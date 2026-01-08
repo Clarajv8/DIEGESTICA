@@ -210,6 +210,26 @@ $(document).ready(function() {
             wesObserver.observe(this);
         });
 
+        // Lógica del Slider Automático Wes Anderson
+        function startWesSlider() {
+            const $images = $('.slider-img');
+            let currentIndex = 0;
+
+            setInterval(function() {
+                $images.eq(currentIndex).removeClass('active');
+                currentIndex = (currentIndex + 1) % $images.length;
+
+                $images.eq(currentIndex).addClass('active');
+                
+            }, 4000);
+        }
+
+        $(document).ready(function() {
+            if ($('.wes-slider').length) {
+                startWesSlider();
+            }
+        });
+
 
         // 2. INTERACCIÓN DE PALETA DE COLORES (THEME SWITCHER)
         $('.color-strip').on('click', function() {
