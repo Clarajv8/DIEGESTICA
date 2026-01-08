@@ -1373,6 +1373,10 @@ to {
 
 .three-column-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
 
+/* =========================================
+   === SOFIA COPPOLA PAGE STYLES END ===
+   ========================================= */
+
 
 /* === DENIS VILLENEUVE === */
 
@@ -1595,6 +1599,7 @@ to {
     color: var(--dv-text);
 }
 
+/* FOOTER */
 .dv-footer {
     padding: 40px 20px;
     background: #1a1a1a;
@@ -1621,6 +1626,7 @@ to {
     border-bottom: 2px solid #D9534F;
 }
 
+/* Estilos específicos para tarjetas de filmografía en Villeneuve */
 .dv-section .movie-ticket {
     border-radius: 15px;
     color: #2C2C2C;
@@ -1657,12 +1663,8 @@ to {
     transition: opacity 0.5s ease;
 }
 
-.dv-bg--base { 
-    opacity: 1; 
-}
-.dv-bg--hover { 
-    opacity: 0; 
-}
+.dv-bg--base { opacity: 1; }
+.dv-bg--hover { opacity: 0; }
 
 .dv-hero-overlay {
     position: absolute;
@@ -1693,7 +1695,6 @@ to {
     color: var(--dv-secondary);
 }
 
-/* NO HOVER */
 .dv-hero-content .director-quote {
     opacity: 0;
     transform: translateY(8px);
@@ -1711,7 +1712,6 @@ to {
     transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
-/* HOVER */
 .dv-hero-content:hover .director-quote {
     opacity: 1;
     transform: translateY(0);
@@ -1750,3 +1750,7 @@ to {
 .brutal-bg .prop-card.archive-style:hover .prop-image-frame img {
     transform: scale(1.1);
 }
+
+/* =========================================
+=== DENIS VILLENEUVE PAGE STYLES END ===
+========================================= */
