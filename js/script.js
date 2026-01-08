@@ -79,25 +79,25 @@ $(document).ready(function() {
         coppola: {
             name: "Sofia Coppola",
             desc: "Tu mundo es íntimo y melancólico. Encuentras belleza en el aislamiento y los silencios.",
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6sEwXv4wH-fGgWJvG-Dq4q4q4q4q4q4q4q4&s",
+            img: "/media/img/Sofia-Coppola-Cara.jpg",
             link: "sofia-coppola.html"
         },
         anderson: {
             name: "Wes Anderson",
             desc: "Buscas el orden en el caos. Tu vida es una paleta de colores pastel y simetría perfecta.",
-            img: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Wes_Anderson_Venice_Film_Festival_2023.jpg/800px-Wes_Anderson_Venice_Film_Festival_2023.jpg",
+            img: "/media/img/Wes-Anderson-Cara.jpg",
             link: "wes-anderson.html"
         },
         villeneuve: {
             name: "Denis Villeneuve",
             desc: "Te atrae lo monumental y lo brutalista. Tu atmósfera es tensa, inmensa y visualmente impactante.",
-            img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Denis_Villeneuve_by_Gage_Skidmore.jpg/640px-Denis_Villeneuve_by_Gage_Skidmore.jpg",
+            img: "/media/img/Denise-Villenueve-Cara.jpg",
             link: "denis-villeneuve.html"
         },
         amenabar: {
             name: "Alejandro Amenábar",
             desc: "Vives entre luces y sombras. El misterio y la tensión psicológica definen tu espacio.",
-            img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Alejandro_Amen%C3%A1bar_2019.jpg/640px-Alejandro_Amen%C3%A1bar_2019.jpg",
+            img: "/media/img/Alejandro-Amenabar-Cara.jpg",
             link: "alejandro-amenabar.html"
         }
     };
