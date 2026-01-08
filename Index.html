@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIEGÉSTICA | Arquitectos de Atmósferas</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,700&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="preloader">
+        <div class="loader-content">
+            <span class="brand-loader">DIEGÉSTICA</span>
+            <span class="loading-text">Construyendo espacios...</span>
+        </div>
+    </div>
+
+    <header class="main-nav">
+        <div class="brand">DIEGÉSTICA</div>
+        <nav>
+            <a href="#hero">Directores</a>
+            <a href="#intro">Manifiesto</a>
+            <a href="#quiz">Quiz</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="staged-wrapper">
+            <article class="panel" onclick="window.location.href='sofia-coppola.html'" style="--img: url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1000')">
+                <div class="panel-content">
+                    <p class="director-role">La mirada íntima</p>
+                    <h2 class="director-name">Sofia <br>Coppola</h2>
+                </div>
+            </article>
+            <article class="panel" onclick="window.location.href='wes-anderson.html'" style="--img: url('https://images.unsplash.com/photo-1492691523567-6170c817538a?q=80&w=1000')">
+                <div class="panel-content">
+                    <p class="director-role">Simetría obsesiva</p>
+                    <h2 class="director-name">Wes <br>Anderson</h2>
+                </div>
+            </article>
+            <article class="panel" onclick="window.location.href='denis-villeneuve.html'" style="--img: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=1000')">
+                <div class="panel-content">
+                    <p class="director-role">Escala y brutalismo</p>
+                    <h2 class="director-name">Denis <br>Villeneuve</h2>
+                </div>
+            </article>
+            <article class="panel" onclick="window.location.href='alejandro-amenabar.html'" style="--img: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1000')">
+                <div class="panel-content">
+                    <p class="director-role">Luz y claroscuro</p>
+                    <h2 class="director-name">Alejandro <br>Amenábar</h2>
+                </div>
+            </article>
+            
+            <div class="scroll-indicator" onclick="document.getElementById('intro').scrollIntoView({behavior: 'smooth'})">
+                Explora la Atmósfera ↓
+            </div>
+        </section>
+
+        <div class="ticker-wrap">
+            <div class="ticker">
+                <div class="ticker-item">EL ESPACIO COMO NARRATIVA — ARQUITECTOS DE ATMÓSFERAS — CINE Y PSICOLOGÍA —</div>
+                <div class="ticker-item">EL ESPACIO COMO NARRATIVA — ARQUITECTOS DE ATMÓSFERAS — CINE Y PSICOLOGÍA —</div>
+            </div>
+        </div>
+
+        <section id="intro" class="content-section">
+            <div class="text-container reveal-on-scroll">
+                <span class="section-label">01 — El Manifiesto</span>
+                <h3>El espacio no es un fondo. <br>Es un personaje.</h3>
+                <p>
+                    En el cine convencional, el escenario es simplemente donde ocurren las cosas. 
+                    En la <strong>Diegéstica</strong>, el entorno respira, oprime, libera y narra. 
+                    Desde los hoteles pastel de Anderson hasta los desiertos brutales de Villeneuve.
+                </p>
+            </div>
+        </section>
+
+        <section id="quiz" class="quiz-section">
+            <div class="quiz-card reveal-on-scroll">
+                <span class="section-label">02 — Interacción</span>
+                <h2>¿Quién dirige tu vida?</h2>
+                <p>Responde 3 preguntas sobre tu relación con el espacio y descubre tu director interior.</p>
+                <button id="open-quiz" class="btn-quiz">Comenzar el Casting</button>
+            </div>
+        </section>
+
+        <div id="quiz-modal" class="modal-overlay">
+            <div class="modal-content">
+                <button id="close-quiz" class="close-btn">&times;</button>
+                
+                <div id="quiz-body">
+                    <div class="quiz-header">
+                        <span id="question-counter">Cargando...</span>
+                        <div class="progress-bar"><div id="progress-fill"></div></div>
+                    </div>
+                    <h3 id="question-text">...</h3>
+                    <div id="answers-container" class="answers-grid">
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+        <footer class="main-footer">
+            <p>&copy; 2026 Diegéstica | Web</p>
+        </footer>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
