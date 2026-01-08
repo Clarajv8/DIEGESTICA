@@ -487,3 +487,58 @@ body {
 /* =========================================
    === WES ANDERSON PAGE STYLES END ===
    ========================================= */
+
+
+/* AMENABAR HEADER*/
+.aa-nav {
+    mix-blend-mode: normal !important;
+    background: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(6px);
+}
+
+.aa-nav .brand a,
+.aa-nav nav a {
+    color: #e0e0e0 !important; /* Blanco/gris claro Amenábar */
+    opacity: 1 !important;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* AMENABAR HERO */
+
+.aa-hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.aa-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* Oscurece y da tensión psicológica */
+.aa-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.65),
+        rgba(0, 0, 0, 0.85)
+    );
+    z-index: 1;
+}
+
+/* Contenido por encima */
+.aa-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    justify-content: center;
+    padding: 30em 0;
+}
