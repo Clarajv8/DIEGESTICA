@@ -199,6 +199,7 @@ body {
     letter-spacing: 2px;
     cursor: pointer;
     transition: 0.4s;
+    margin-top: 2rem;
 }
 
 .btn-quiz:hover {
@@ -315,10 +316,18 @@ body {
 }
 
 @media (max-width: 768px) {
-    .staged-wrapper { flex-direction: column; }
-    .panel { border-bottom: 1px solid rgba(255,255,255,0.1); border-right: none; }
-    .panel:hover { flex: 5; }
-    .quiz-card, .modal-content { padding: 30px; margin: 20px; }
+    .staged-wrapper {
+        flex-direction: column;
+    }
+    .panel { border-bottom: 1px solid rgba(255,255,255,0.1);
+        border-right: none;
+    }
+    .panel:hover {
+        flex: 5;
+    }
+    .quiz-card, .modal-content {
+        padding: 30px; margin: 20px;
+    }
 }
 
 /* --- 1. PRELOADER --- */
@@ -335,6 +344,7 @@ body {
     align-items: center;
     transition: opacity 0.8s ease, visibility 0.8s;
 }
+
 .loader-content {
     text-align: center;
 }
@@ -434,14 +444,14 @@ body {
 }
 
 @keyframes fadeIn {
-    from {
-    opacity: 0;
-    transform: translateY(20px);
-}
-to {
-    opacity: 1;
-    transform: translateY(0);
-}
+        from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
@@ -597,15 +607,21 @@ to {
 }
 
 .wes-heading.centered::after {
-    background: var(--wes-accent); /* Línea central dinámica */
+    background: var(--wes-accent); 
 }
 
 .director-quote {
-    font-family: var(--font-serif); font-style: italic; font-size: 1.2rem; color: #6D4C41;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #6D4C41;
 }
 
 .hero-image-container {
-    position: relative; width: 80%; max-width: 900px; height: 400px;
+    position: relative;
+    width: 80%;
+    max-width: 900px;
+    height: 400px;
     border: 8px solid var(--wes-static-cream);
     box-shadow: 0 10px 30px rgba(62, 39, 35, 0.2);
     overflow: hidden;
@@ -652,6 +668,7 @@ to {
     display: inline-block;
     padding-bottom: 10px;
 }
+
 .wes-heading.centered {
     display: block;
     text-align: center;
@@ -673,13 +690,16 @@ to {
     gap: 40px;
     align-items: center;
 }
+
 .text-col p {
     margin-bottom: 20px;
     line-height: 1.7;
 }
+
 .text-col strong {
     color: var(--wes-accent);
 }
+
 .framed-img {
     width: 100%;
     border: 5px solid #fff;
@@ -700,15 +720,23 @@ to {
     border-radius: 8px;
     transition: transform 0.3s ease;
 }
+
 .wes-card:hover {
     transform: translateY(-10px);
 }
 
 .card-icon {
-    width: 50px; height: 50px; margin: 0 auto 20px;
-    color: #fff; font-weight: bold; font-size: 1.2rem;
-    display: flex; align-items: center; justify-content: center;
-    border-radius: 50%; border: 3px solid var(--wes-text);
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 20px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 3px solid var(--wes-text);
 }
 
 .anime-pop-in {
@@ -722,8 +750,13 @@ to {
 }
 
 @keyframes bouncyReveal {
-    0%{opacity:0;
-        transform: scale(0.8);} 100%{opacity:1; transform: scale(1);}
+    0% {
+        opacity:0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity:1; transform: scale(1);
+    }
 }
 @keyframes slideUpCamp {
     100%{
@@ -737,6 +770,7 @@ to {
     transform: translateY(30px);
     transition: all 0.8s ease;
 }
+
 .reveal-wes.active {
     opacity: 1;
     transform: translateY(0);
@@ -747,6 +781,7 @@ to {
     padding: 60px 20px;
     background: var(--wes-bg);
 }
+
 .back-home-btn {
     text-decoration: none;
     color: var(--wes-text);
@@ -757,6 +792,7 @@ to {
     padding: 15px 30px;
     transition: 0.3s;
 }
+
 .back-home-btn:hover {
     background: var(--wes-text);
     color: var(--wes-bg);
@@ -787,7 +823,8 @@ to {
 
 .props-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns:
+    repeat(auto-fit, minmax(280px, 1fr));
     gap: 50px; 
     padding: 20px;
 }
@@ -1008,8 +1045,6 @@ to {
 }
 
 /* --- EXCEPCIÓN PARA SECCIONES ESTÁTICAS (PASTEL) --- */
-
-/* Forzamos a que el título mantenga siempre el marrón y el mostaza original */
 .pastel-bg .wes-heading {
     color: var(--wes-static-brown) !important;
 }
@@ -1018,8 +1053,6 @@ to {
     background: var(--wes-mustard) !important;
 }
 
-/* Si tienes subtítulos o párrafos con negritas en esa sección, 
-   también los protegemos para que no cambien de color */
 .pastel-bg .section-subtitle {
     color: var(--wes-red) !important;
 }
@@ -1028,7 +1061,6 @@ to {
     color: var(--wes-red) !important;
 }
 
-/* Mantenemos el borde de las "Figuras" (A, B, C) siempre en mostaza */
 .pastel-bg .prop-card.archive-style {
     box-shadow: 10px 10px 0px var(--wes-mustard) !important;
 }
