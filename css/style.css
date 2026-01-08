@@ -1408,3 +1408,381 @@ body {
 /* =========================================
    === SOFIA COPPOLA PAGE STYLES END ===
    ========================================= */
+
+
+/* === DENIS VILLENEUVE === */
+
+.villeneuve-page {
+    --dv-primary: #D9534F; /* Naranja tóxico */
+    --dv-secondary: #F0AD4E; /* Amarillo sepia */
+    --dv-bg: #878c91; /* Gris oscuro */
+    --dv-text: #F5F5F5; /* Blanco hueso */
+    --dv-accent: #FFD700; /* Dorado */
+    background-color: var(--dv-bg);
+    color: var(--dv-text);
+}
+
+/* VILLENEUVE HEADER */
+.dv-nav {
+    background: linear-gradient(135deg, var(--dv-bg), #1a1a1a);
+    border-bottom: 2px solid var(--dv-primary);
+}
+
+.dv-nav .brand a,
+.dv-nav nav a {
+    color: var(--dv-text);
+}
+
+.dv-nav .brand a:hover,
+.dv-nav nav a:hover {
+    color: var(--dv-secondary);
+}
+
+.dv-narrative-section {
+    padding: 100px 20px;
+    background: var(--dv-bg);
+}
+
+.dv-narrative-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.dv-narrative-area {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.dv-narrative-text {
+    flex: 1;
+}
+
+.dv-narrative-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: var(--dv-primary);
+}
+
+.dv-narrative-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--dv-text);
+}
+
+.dv-narrative-card {
+    flex: 1;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.dv-narrative-card-label {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(217,83,79,0.9);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* VILLENEUVE SECCIONES */
+.dv-section {
+    padding: 80px 20px;
+    background: var(--dv-bg);
+}
+
+.dv-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.dv-heading {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--dv-primary);
+    position: relative;
+}
+
+.dv-heading.centered {
+    text-align: center;
+}
+
+.dv-heading.centered::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: var(--dv-secondary);
+    margin: 10px auto;
+}
+
+.reveal-dv {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease;
+}
+
+.reveal-dv.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.props-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.prop-card {
+    background: #3a3a3a;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+
+.prop-card:hover {
+    transform: translateY(-10px);
+}
+
+.prop-image-frame {
+    height: 200px;
+    overflow: hidden;
+}
+
+.prop-image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.prop-details {
+    padding: 20px;
+}
+
+.prop-category {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--dv-secondary);
+    letter-spacing: 1px;
+}
+
+.prop-card h4 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+    color: var(--dv-text);
+}
+
+.prop-divider {
+    width: 50px;
+    height: 2px;
+    background: var(--dv-primary);
+    margin: 15px 0;
+}
+
+.prop-desc {
+    line-height: 1.6;
+    color: #ccc;
+}
+
+.dv-interactive-container {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.scale-slider input {
+    width: 100%;
+    max-width: 400px;
+}
+
+/* FILMOGRAFIA */
+.film-scroller {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 20px 0;
+}
+
+.film-card {
+    min-width: 200px;
+    background: #3a3a3a;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.film-year {
+    font-size: 0.8rem;
+    color: var(--dv-secondary);
+}
+
+.film-title {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    color: var(--dv-text);
+}
+
+/* FOOTER */
+.dv-footer {
+    padding: 40px 20px;
+    background: #1a1a1a;
+    text-align: center;
+}
+
+.back-home-btn {
+    color: var(--dv-text);
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 2px solid var(--dv-primary);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.back-home-btn:hover {
+    background: var(--dv-primary);
+    color: var(--dv-bg);
+}
+
+.brutal-bg {
+    background-color: #1a1a1a;
+    border-top: 2px solid #D9534F;
+    border-bottom: 2px solid #D9534F;
+}
+
+/* Estilos específicos para tarjetas de filmografía en Villeneuve */
+.dv-section .movie-ticket {
+    border-radius: 15px;
+    color: #2C2C2C;
+}
+
+.dv-section .ticket-date {
+    color: var(--dv-primary);
+}
+
+.dv-section .ticket-title {
+    color: #2C2C2C;
+}
+
+.dv-section .ticket-deco {
+    color: #2C2C2C;
+}
+
+.dv-hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dv-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease;
+}
+
+.dv-bg--base { opacity: 1; }
+.dv-bg--hover { opacity: 0; }
+
+.dv-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(0,0,0,0.7), rgba(217,83,79,0.3));
+}
+
+.dv-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.dv-hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: var(--dv-text);
+}
+
+.dv-hero-content p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--dv-secondary);
+}
+
+.dv-hero-content .director-quote {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    pointer-events: none;
+}
+.dv-hero-content .director-title {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.dv-hero-content .director-label {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.dv-hero-content:hover .director-quote {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.dv-hero-content:hover .director-title {
+    opacity: 0;
+    transform: translateY(-8px);
+}
+.dv-hero-content:hover .director-label {
+    opacity: 0;
+    transform: translateY(-8px);
+}
+.dv-hero:has(.dv-hero-content:hover) .dv-bg--base { opacity: 0; }
+.dv-hero:has(.dv-hero-content:hover) .dv-bg--hover { opacity: 1; }
+
+/* Estilos específicos para tarjetas */
+.brutal-bg .prop-card.archive-style {
+    background: #2a2a2a;
+    border: 4px solid #D9534F;
+    border-radius: 0;
+    padding: 25px;
+    text-align: center;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+    position: relative;
+}
+
+.brutal-bg .prop-card.archive-style:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(217,83,79,0.3);
+    border-color: #FFD700;
+}
+
+.brutal-bg .prop-card.archive-style:hover .prop-image-frame img {
+    transform: scale(1.1);
+}
+
+/* =========================================
+=== DENIS VILLENEUVE PAGE STYLES END ===
+========================================= */
