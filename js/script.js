@@ -249,5 +249,78 @@ $(document).ready(function() {
        === WES ANDERSON PAGE JS END ===
        ========================================= */
 
+
+
+    //    AMENABAR
+    // AMENABAR PELIS
+    const $aboutArea = $('#aa-narrative-area');
+    const $aboutCards = $('.aa-narrative-card');
+
+    if ($aboutArea.length && $aboutCards.length) {
+        function posicionarAleatorio($card) {
+            const areaRect = $aboutArea[0].getBoundingClientRect();
+            const cardRect = $card[0].getBoundingClientRect();
+            const maxLeft = areaRect.width - cardRect.width;
+            const maxTop = areaRect.height - cardRect.height;
+            const left = Math.max(0, Math.random() * maxLeft);
+            const top = Math.max(0, Math.random() * maxTop);
+            $card.css({ left: left + 'px', top: top + 'px' });
+        }
+
+        $aboutCards.each(function () { posicionarAleatorio($(this)); });
+
+        let isDragging = false;
+        let activeCard = null;
+        let offsetX = 0;
+        let offsetY = 0;
+
+        function getClientPos(e) {
+            if (e.type && e.type.startsWith('touch')) {
+                const touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+                return { x: touch.clientX, y: touch.clientY };
+            }
+            return { x: e.clientX, y: e.clientY };
+        }
+
+        function startDrag(e) {
+            const $target = $(e.currentTarget);
+            activeCard = $target;
+            isDragging = false;
+            const cardRect = $target[0].getBoundingClientRect();
+            const pos = getClientPos(e);
+            offsetX = pos.x - cardRect.left;
+            offsetY = pos.y - cardRect.top;
+            $(document).on('mousemove.aa-narrativeDrag touchmove.aa-narrativeDrag', onDrag)
+                       .on('mouseup.aa-narrativeDrag touchend.aa-narrativeDrag touchcancel.aa-narrativeDrag', endDrag);
+        }
+
+        function onDrag(e) {
+            if (!activeCard) return;
+            const areaRect = $aboutArea[0].getBoundingClientRect();
+            const cardRect = activeCard[0].getBoundingClientRect();
+            const pos = getClientPos(e);
+            let left = pos.x - offsetX - areaRect.left;
+            let top = pos.y - offsetY - areaRect.top;
+            const maxLeft = areaRect.width - cardRect.width;
+            const maxTop = areaRect.height - cardRect.height;
+            left = Math.min(Math.max(0, left), maxLeft);
+            top = Math.min(Math.max(0, top), maxTop);
+            activeCard.css({ left: left + 'px', top: top + 'px' });
+            isDragging = true;
+        }
+
+        function endDrag(e) {
+            $(document).off('.aa-narrativeDrag');
+            if (!activeCard) return;
+            const $clickedCard = activeCard;
+            const fueArrastre = isDragging;
+            activeCard = null;
+            isDragging = false;
+            if (!fueArrastre) { abrirOverlay($clickedCard); }
+        }
+    }
+
+    // FIN DE AMENABAR
+
     console.log("Sistema jQuery cargado correctamente.");
 });

@@ -487,3 +487,192 @@ body {
 /* =========================================
    === WES ANDERSON PAGE STYLES END ===
    ========================================= */
+/* AMENABAR */
+.amenabar-page {
+    --aa-bg: #1d3b37;
+    --aa-text: #fff8d1;
+
+    background-color: var(--aa-bg);
+    color: var(--aa-text);
+    overflow-x: hidden;
+}
+
+/* AMENABAR HEADER*/
+.aa-nav {
+    mix-blend-mode: normal !important;
+    background: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(6px);
+}
+
+.aa-nav .brand a,
+.aa-nav nav a {
+    color: var(--white);
+    opacity: 1 !important;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* AMENABAR HERO */
+
+.aa-hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0 0 3em 0;
+}
+
+.aa-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    transition: opacity 0.6s ease;
+}
+
+.aa-bg--base { opacity: 1; }
+.aa-bg--hover { opacity: 0; }
+
+.aa-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.137),
+        rgba(0, 0, 0, 0.938)
+    );
+    z-index: 1;
+}
+
+.aa-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-height: fit-content;
+    display: flex;
+    flex-direction: column;
+    margin: 20em 0;
+}
+.aa-hero-content h1 {
+    font-size: 3em;
+}
+.aa-hero-content p {
+    font-size: 2em;
+    font-style: normal;
+    color: var(--aa-text);
+}
+
+/* NO HOVER */
+.aa-hero-content .director-quote {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  pointer-events: none;
+}
+.aa-hero-content .director-title {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.aa-hero-content .director-label {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+/* HOVER */
+.aa-hero-content:hover .director-quote {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.aa-hero-content:hover .director-title {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+.aa-hero-content:hover .director-label {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+.aa-hero-content:hover ~ .aa-hero-overlay ~ .aa-bg--base,
+.aa-hero-content:hover ~ .aa-bg--base {
+  opacity: 0;
+}
+.aa-hero:has(.aa-hero-content:hover) .aa-bg--base { opacity: 0; }
+.aa-hero:has(.aa-hero-content:hover) .aa-bg--hover { opacity: 1; }
+
+/* ABOUT AA */
+.aa-narrative-section {
+    min-height: 100vh; max-width: 100vw; height: calc(100vh - 4.375rem);
+    padding: 3vh 3vw; background-color: var(--color-fondo-secundario);
+    display: flex; align-items: center; justify-content: center; box-sizing: border-box;
+    position: relative; z-index: 1; 
+}
+.aa-narrative-inner { width: 100%; margin-inline: auto; }
+
+.aa-narrative-area {
+    position: relative; 
+    height: 80vh; 
+    max-height: 800px; 
+    width: 100%;
+    overflow: hidden; 
+}
+
+.aa-narrative-text { 
+    position: absolute; 
+    top: 12vh; 
+    left: 8vw; 
+    max-width: 22rem; 
+}
+
+.aa-narrative-title { 
+    font-size: 2.2rem; 
+    text-transform: uppercase; 
+    letter-spacing: 0.12em; 
+    margin-bottom: 0.8rem; 
+}
+.aa-narrative-subtitle { 
+    font-size: 1rem; 
+}
+
+.aa-narrative-card::before {
+    content: "";
+    position: absolute;
+    width: 90px;
+    height: 28px;
+    background-color: rgba(255,255,255,0.85);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    backdrop-filter: blur(2px);
+
+    top: -16px;             
+    left: 50%;
+    transform: translateX(-50%) rotate(-6deg);
+
+    z-index: 2;
+    pointer-events: none;
+}
+
+.aa-narrative-card {
+    position: absolute; 
+    width: 20rem; height: 20rem; 
+    padding: 1rem;
+    display: flex; 
+    align-items: flex-end; 
+    justify-content: flex-start;
+    font-size: 0.9rem; 
+    font-weight: 600; 
+    text-transform: uppercase; 
+    letter-spacing: 0.08em;
+    box-shadow: 0 0.8rem 2rem rgba(0,0,0,0.18);
+    user-select: none; 
+    touch-action: none; 
+    cursor: grab;
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+}
+.aa-narrative-card:active { cursor: grabbing; }
+.aa-narrative-card-label { color: #fff; text-shadow: 0 0.1rem 0.35rem rgba(0,0,0,0.4); }
