@@ -216,13 +216,16 @@ $(document).ready(function() {
             const $this = $(this);
             const $wesRoot = $('.wes-anderson-page'); 
             const $feedback = $('#copy-feedback');
+
             const newBgColor = $this.attr('data-color');
             const newTextColor = $this.attr('data-text-color');
+            const newAccentColor = $this.attr('data-accent');
 
             navigator.clipboard.writeText(newBgColor);
 
             $wesRoot.css('--wes-bg', newBgColor);
             $wesRoot.css('--wes-text', newTextColor);
+            $wesRoot.css('--wes-accent', newAccentColor);
 
             if (newTextColor === '#FFFFFF' || newTextColor === '#FBF6E9') {
                 $wesRoot.css('--wes-bg-secondary', 'rgba(0,0,0,0.2)');
