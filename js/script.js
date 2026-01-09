@@ -252,75 +252,97 @@ $(document).ready(function() {
 
 
     //    AMENABAR
-    // AMENABAR PELIS
-    const $aboutArea = $('#aa-narrative-area');
-    const $aboutCards = $('.aa-narrative-card');
+    /* NARRATIVE  CARDS*/
 
-    if ($aboutArea.length && $aboutCards.length) {
-        function posicionarAleatorio($card) {
-            const areaRect = $aboutArea[0].getBoundingClientRect();
-            const cardRect = $card[0].getBoundingClientRect();
-            const maxLeft = areaRect.width - cardRect.width;
-            const maxTop = areaRect.height - cardRect.height;
-            const left = Math.max(0, Math.random() * maxLeft);
-            const top = Math.max(0, Math.random() * maxTop);
-            $card.css({ left: left + 'px', top: top + 'px' });
-        }
+    (function enableAmenabarDragCards() {
+    const $area = $('#aa-narrative-area');
+    if (!$area.length) return;
 
-        $aboutCards.each(function () { posicionarAleatorio($(this)); });
+    let topZ = 10;
 
-        let isDragging = false;
-        let activeCard = null;
-        let offsetX = 0;
-        let offsetY = 0;
+    let draggingEl = null;
+    let startPointer = { x: 0, y: 0 };
+    let startPos = { x: 0, y: 0 };
 
-        function getClientPos(e) {
-            if (e.type && e.type.startsWith('touch')) {
-                const touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
-                return { x: touch.clientX, y: touch.clientY };
-            }
-            return { x: e.clientX, y: e.clientY };
-        }
+    const clamp = (val, min, max) => Math.max(min, Math.min(max, val));
 
-        function startDrag(e) {
-            const $target = $(e.currentTarget);
-            activeCard = $target;
-            isDragging = false;
-            const cardRect = $target[0].getBoundingClientRect();
-            const pos = getClientPos(e);
-            offsetX = pos.x - cardRect.left;
-            offsetY = pos.y - cardRect.top;
-            $(document).on('mousemove.aa-narrativeDrag touchmove.aa-narrativeDrag', onDrag)
-                       .on('mouseup.aa-narrativeDrag touchend.aa-narrativeDrag touchcancel.aa-narrativeDrag', endDrag);
-        }
+    $area.find('.aa-narrative-card').each(function (i) {
+        const el = this;
 
-        function onDrag(e) {
-            if (!activeCard) return;
-            const areaRect = $aboutArea[0].getBoundingClientRect();
-            const cardRect = activeCard[0].getBoundingClientRect();
-            const pos = getClientPos(e);
-            let left = pos.x - offsetX - areaRect.left;
-            let top = pos.y - offsetY - areaRect.top;
-            const maxLeft = areaRect.width - cardRect.width;
-            const maxTop = areaRect.height - cardRect.height;
-            left = Math.min(Math.max(0, left), maxLeft);
-            top = Math.min(Math.max(0, top), maxTop);
-            activeCard.css({ left: left + 'px', top: top + 'px' });
-            isDragging = true;
-        }
+        const hasInlineLeft = el.style.left !== '';
+        const hasInlineTop  = el.style.top !== '';
+        if (hasInlineLeft && hasInlineTop) return;
 
-        function endDrag(e) {
-            $(document).off('.aa-narrativeDrag');
-            if (!activeCard) return;
-            const $clickedCard = activeCard;
-            const fueArrastre = isDragging;
-            activeCard = null;
-            isDragging = false;
-            if (!fueArrastre) { abrirOverlay($clickedCard); }
-        }
+        const areaRect = $area[0].getBoundingClientRect();
+
+        const elW = el.offsetWidth;
+        const elH = el.offsetHeight;
+
+        const marginRight = 40;
+        const startTop = 80;
+
+        const defaultLeft = Math.max(0, areaRect.width - elW - marginRight);
+        const defaultTop  = startTop + (i * 25);
+
+        el.style.left = `${defaultLeft}px`;
+        el.style.top  = `${defaultTop}px`;
+
+        el.style.userSelect = 'none';
+    });
+
+
+
+    $area.on('pointerdown', '.aa-narrative-card', function (e) {
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
+
+        draggingEl = this;
+        draggingEl.setPointerCapture(e.pointerId);
+        topZ += 1;
+        draggingEl.style.zIndex = topZ;
+        startPointer = { x: e.clientX, y: e.clientY };
+
+        const left = parseFloat(draggingEl.style.left) || 0;
+        const top = parseFloat(draggingEl.style.top) || 0;
+        startPos = { x: left, y: top };
+
+        draggingEl.style.cursor = 'grabbing';
+
+        e.preventDefault();
+    });
+
+    $area.on('pointermove', function (e) {
+        if (!draggingEl) return;
+
+        const $drag = $(draggingEl);
+
+        const areaRect = $area[0].getBoundingClientRect();
+        const dragRect = draggingEl.getBoundingClientRect();
+
+        const dx = e.clientX - startPointer.x;
+        const dy = e.clientY - startPointer.y;
+
+        let newX = startPos.x + dx;
+        let newY = startPos.y + dy;
+
+        const maxX = areaRect.width - dragRect.width;
+        const maxY = areaRect.height - dragRect.height;
+
+        newX = clamp(newX, 0, maxX);
+        newY = clamp(newY, 0, maxY);
+
+        draggingEl.style.left = `${newX}px`;
+        draggingEl.style.top = `${newY}px`;
+    });
+
+    function endDrag(e) {
+        if (!draggingEl) return;
+        draggingEl.style.cursor = 'grab';
+        draggingEl = null;
     }
 
-    // FIN DE AMENABAR
+    $area.on('pointerup pointercancel pointerleave', endDrag);
+    })();
+
 
     console.log("Sistema jQuery cargado correctamente.");
 });
