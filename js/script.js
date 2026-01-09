@@ -355,8 +355,9 @@ $(document).ready(function() {
             }
 
             const $aaRoot = $('.amenabar-page');
-            $aaRoot.css('--aa-surface', newBgColor);
-            $aaRoot.css('--aa-surface-text', newTextColor);
+            $aaRoot.css('--aa-bg', newBgColor);
+            $aaRoot.css('--aa-text', newTextColor);
+
 
             const $feedback = $('#aa-copy-feedback');
             $feedback
@@ -368,6 +369,81 @@ $(document).ready(function() {
             }, 2000);
         });
     }
+
+//     CARRUSEL
+    (function enableAmenabarFilmCarousel(){
+    if (!$('.amenabar-page').length) return;
+
+    const $carousel = $('#aa-vert-carousel');
+    if (!$carousel.length) return;
+
+    const $slides = $carousel.find('.aa-film-slide');
+    const total = $slides.length;
+    if (total < 3) return;
+
+    let index = 0;
+    let timer = null;
+    const intervalMs = 5000;
+
+    const mod = (n, m) => ((n % m) + m) % m;
+
+    function applyClasses(){
+        const prev = mod(index - 1, total);
+        const next = mod(index + 1, total);
+
+        $slides.each(function(i){
+        $(this)
+            .removeClass('is-prev is-current is-next is-hidden')
+            .addClass('is-hidden');
+        });
+
+        $slides.eq(prev).removeClass('is-hidden').addClass('is-prev');
+        $slides.eq(index).removeClass('is-hidden').addClass('is-current');
+        $slides.eq(next).removeClass('is-hidden').addClass('is-next');
+    }
+
+    function goNext(){
+        index = mod(index + 1, total);
+        applyClasses();
+    }
+
+    function goPrev(){
+        index = mod(index - 1, total);
+        applyClasses();
+    }
+
+    function resetAutoplay(){
+        if (timer) clearInterval(timer);
+        timer = setInterval(goNext, intervalMs);
+    }
+
+    $carousel.on('click', '.aa-film-slide', function(){
+        const $s = $(this);
+        if ($s.hasClass('is-prev')) {
+        goPrev();
+        resetAutoplay();
+        } else if ($s.hasClass('is-next')) {
+        goNext();
+        resetAutoplay();
+        }
+    });
+
+    applyClasses();
+    resetAutoplay();
+
+    const io = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+        if (!entry.isIntersecting) {
+            if (timer) clearInterval(timer);
+            timer = null;
+        } else {
+            resetAutoplay();
+        }
+        });
+    }, { threshold: 0.25 });
+
+    io.observe($carousel[0]);
+    })();
 
 
     // END AMENABAR
