@@ -1151,7 +1151,6 @@ body {
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    margin: 0 0 3em 0;
 }
 
 .aa-hero-bg {
@@ -1264,50 +1263,258 @@ body {
     text-transform: uppercase; 
     letter-spacing: 0.12em; 
     margin-bottom: 0.8rem; 
+    font-family: var(--font-serif);
 }
 .aa-narrative-subtitle { 
     font-size: 1rem; 
 }
 
-.aa-narrative-card::before {
-    content: "";
-    position: absolute;
-    width: 90px;
-    height: 28px;
-    background-color: rgba(255,255,255,0.85);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    backdrop-filter: blur(2px);
-
-    top: -16px;             
-    left: 50%;
-    transform: translateX(-50%) rotate(-6deg);
-
-    z-index: 2;
-    pointer-events: none;
-}
 
 .aa-narrative-card {
     position: absolute; 
-    width: 20rem; height: 20rem; 
+    width: 15rem; height: 15rem; 
     padding: 1rem;
-    display: flex; 
-    align-items: flex-end; 
-    justify-content: flex-start;
-    font-size: 0.9rem; 
-    font-weight: 600; 
-    text-transform: uppercase; 
-    letter-spacing: 0.08em;
-    box-shadow: 0 0.8rem 2rem rgba(0,0,0,0.18);
     user-select: none; 
     touch-action: none; 
     cursor: grab;
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat;
+}
+
+.aa-narrative-card img {
+    width: 100%;
+    height: 100%;
+    object-fit:contain;
 }
 .aa-narrative-card:active { cursor: grabbing; }
 .aa-narrative-card-label { color: #fff; text-shadow: 0 0.1rem 0.35rem rgba(0,0,0,0.4); }
 
+/* AMENABAR: COLORES PARA SECCIONES (fondo dinámico) */
+.amenabar-page{
+  --aa-surface: var(--aa-bg);     
+  --aa-surface-text: var(--aa-text);
+}
+
+#aa-narrative-section,
+.aa-palette-section,
+.filmography-section{
+  background-color: var(--aa-surface);
+  color: var(--aa-surface-text);
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* AMENABAR: PALETA INTERACTIVA */
+.aa-palette-section { padding: 80px 20px;   text-align:center;
+}
+
+.aa-palette-section h3 {
+    text-transform: uppercase; 
+    letter-spacing: 3px; 
+    margin-bottom: 0.8rem; 
+    font-family: var(--font-serif);
+}
+
+.aa-color-palette-container{
+  display:flex;
+  height:150px;
+  width:100%;
+  border: 1px solid rgba(255,255,255,0.25);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  overflow:hidden;
+  cursor:pointer;
+}
+
+.aa-color-strip{
+  flex:1;
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  padding-bottom:20px;
+  transition:flex 0.3s ease;
+  position:relative;
+}
+
+.aa-color-strip span{
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity:0;
+  transform: translateY(10px);
+  transition: 0.3s;
+  padding: 1em;
+  color: var(--aa-text);
+}
+
+.aa-color-strip:hover{ flex:2; }
+.aa-color-strip:hover span{ opacity:1; transform: translateY(0); }
+
+#aa-copy-feedback{
+  margin-top:15px;
+  font-family: var(--font-serif);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  opacity:0;
+  transition: opacity 0.3s;
+  font-weight: 600;
+}
+/* AMENÁBAR VERTICAL CAROUSEL*/
+
+#aa-filmography { padding: 3em;}
+
+
+.aa-heading-filmography {
+    text-transform: uppercase;
+    text-align: center;
+    font-family: var(--font-serif);
+    letter-spacing: 3px;
+}
+
+.aa-vert-carousel{
+  position: relative;
+  width: min(900px, 92vw);
+  height: 520px;
+  margin: 50px auto 0;
+  overflow: hidden;
+}
+
+.aa-film-slide{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  max-width: 860px;
+
+  aspect-ratio: 21 / 9;
+  height: auto;
+
+  transform: translate(-50%, -50%) scale(0.88);
+  opacity: 0;
+  pointer-events: none;
+
+  overflow: hidden;
+  box-shadow: 0 22px 60px rgba(0,0,0,0.35);
+  transition:
+    transform 650ms cubic-bezier(0.2, 0.9, 0.1, 1),
+    opacity 650ms ease;
+}
+
+.aa-film-slide img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.95) contrast(1.05);
+}
+
+.aa-film-slide::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0.05));
+  pointer-events:none;
+    opacity: 0.75;  
+}
+
+.aa-film-meta{
+  position: absolute;
+  left: 26px;
+  bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 450ms ease, transform 450ms ease;
+  z-index: 3;
+}
+
+.aa-film-year{
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+}
+
+.aa-film-title{
+    font-family: var(--font-serif);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.aa-film-slide.is-current{
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
+
+  z-index: 5;
+}
+
+.aa-film-slide.is-current .aa-film-meta{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.aa-film-slide.is-current::after{
+  opacity: 0.25;
+}
+
+.aa-film-slide.is-prev{
+  opacity: 0.20;
+  transform: translate(-50%, calc(-50% - 180px)) scale(0.86);
+  pointer-events: auto;
+  cursor: pointer;
+
+  z-index: 2;
+}
+
+.aa-film-slide.is-prev .aa-film-meta{ opacity: 0; }
+
+.aa-film-slide.is-next{
+  opacity: 0.20;
+  transform: translate(-50%, calc(-50% + 180px)) scale(0.86);
+  pointer-events: auto;
+  cursor: pointer;
+
+  z-index: 2;
+}
+
+.aa-film-slide.is-next .aa-film-meta{ opacity: 0; }
+
+.aa-film-slide.is-hidden{
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.82);
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+.aa-footer { 
+    text-align: center; 
+    padding: 3em; 
+    background-color: var(--aa-bg);
+    transition: background-color 0.5s ease;
+}
+.back-home-btn {
+    text-decoration: none; 
+    color: var(--aa-text); 
+    text-transform: uppercase;
+    letter-spacing: 4px; 
+    border: 1px solid var(--aa-text); 
+    padding: 0.6rem 3rem;
+    transition: 0.3s;
+    font-family: var(--font-serif);
+}
+.back-home-btn:hover { 
+    background: var(--aa-text); 
+    color: var(--aa-bg); 
+}
+
+
+/* accesibilidad y tacto */
+@media (max-width: 768px){
+  .aa-vert-carousel{ height: 460px; }
+  .aa-film-slide.is-prev{ transform: translate(-50%, calc(-50% - 150px)) scale(0.86); }
+  .aa-film-slide.is-next{ transform: translate(-50%, calc(-50% + 150px)) scale(0.86); }
+}
+
+=======
 
 /* =========================================
    === SOFIA COPPOLA PAGE STYLES START ===
@@ -1835,3 +2042,4 @@ body {
 /* =========================================
 === DENIS VILLENEUVE PAGE STYLES END ===
 ========================================= */
+

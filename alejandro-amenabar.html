@@ -31,16 +31,29 @@
                 <div class="aa-narrative-area" id="aa-narrative-area">
                     
                     <div class="aa-narrative-text">
-                        <h2 class="aa-narrative-title">....</h2>
+                        <h2 class="aa-narrative-title">La inquietud como lenguaje</h2>
                         <p class="aa-narrative-subtitle">
-                            -------
+                            Alejandro Amenábar es un director, guionista y compositor hispano-chileno reconocido por su dominio del thriller psicológico y el drama existencial. Desde su debut con Tesis (1996), ganadora de varios Premios Goya, su cine ha explorado el miedo, la identidad y la percepción de la realidad. Con Mar adentro (2004) alcanzó reconocimiento internacional al obtener el Óscar a la Mejor Película de Habla No Inglesa, un Globo de Oro y 14 Premios Goya, consolidándose como uno de los cineastas más influyentes del cine español contemporáneo.
                         </p>
                     </div>
 
-                    <div class="aa-narrative-card"
-                        data-image="RUTA_IMAGEN_1"
-                        style="background-image: url('media/img/about\ me\ -\ 1.png');">
-                        <span class="aa-narrative-card-label"> no sé que poner todavía </span>
+                    <div class="aa-narrative-card">
+                        <img src="media/img/david.png" alt="premio">
+                    </div>
+                    <div class="aa-narrative-card">
+                        <img src="media/img/goya.png" alt="premio">
+                    </div>
+                    <div class="aa-narrative-card">
+                        <img src="media/img/independent.png" alt="premio">
+                    </div>
+                    <div class="aa-narrative-card">
+                        <img src="media/img/ondas.png" alt="premio">
+                    </div>
+                    <div class="aa-narrative-card">
+                        <img src="media/img/oscar.png" alt="premio">
+                    </div>
+                    <div class="aa-narrative-card">
+                        <img src="media/img/venice.png" alt="premio">
                     </div>
 
                 </div>
@@ -48,56 +61,111 @@
         
         </section>
 
-        <section class="aa-section">
+        <section class="aa-section aa-palette-section" id="aa-interactive-palette">
             <div class="aa-container reveal-aa">
-                <h3 class="aa-heading centered">[Título de sección]</h3>
-                <p class="section-subtitle">[Subtítulo]</p>
+                <h3 class="aa-heading">Roba la Paleta</h3>
+                <p style="margin-bottom: 20px;">Haz clic en una tira de color para copiar su HEX y teñir el universo.</p>
 
-                <div class="props-grid">
+                <div class="aa-color-palette-container">
+                <div class="aa-color-strip" data-color="#1d3b37" data-text-color="#fff8d1" style="background-color:#1d3b37;">
+                    <span>Verde militar</span>
+                </div>
 
-                    <div class="prop-card">
-                        <div class="prop-image-frame">
-                            <img src="" alt="">
-                        </div>
-                        <div class="prop-details">
-                            <span class="prop-category">[Categoría]</span>
-                            <h4>[Objeto]</h4>
-                            <div class="prop-divider"></div>
-                            <p class="prop-desc">[Descripción]</p>
-                        </div>
+                <div class="aa-color-strip" data-color="#0b0f14" data-text-color="#e0e0e0" style="background-color:#0b0f14;">
+                    <span>Ventanas cerradas</span>
+                </div>
+
+                <div class="aa-color-strip" data-color="#550909" data-text-color="#fff8d1" style="background-color:#550909;">
+                    <span>Rojo Nuria</span>
+                </div>
+
+                <div class="aa-color-strip" data-color="#1f1f1f" data-text-color="#fff8d1" style="background-color:#1f1f1f;">
+                    <span>Snuff Movies</span>
+                </div>
+
+                <div class="aa-color-strip" data-color="#3c7499" data-text-color="#ffffff" style="background-color:#3c7499;">
+                    <span>Azul Mar</span>
+                </div>
+                </div>
+
+                <div id="aa-copy-feedback">¡Color copiado!</div>
+            </div>
+        </section>
+
+        <section class="aa-section filmography-section" id="aa-filmography">
+            <div class="aa-container reveal-aa">
+                <h3 class="aa-heading-filmography">Filmografía Selecta</h3>
+
+                <div class="aa-vert-carousel" id="aa-vert-carousel">
+                
+                <div class="aa-film-slide" data-title="Tesis" data-year="1996">
+                    <img src="media/img/portada-tesis.jpeg" alt="Tesis (1996)">
+                    <div class="aa-film-meta">
+                    <div class="aa-film-year">1996</div>
+                    <div class="aa-film-title">Tesis</div>
                     </div>
-
-                    <!-- Repetir cards -->
-
                 </div>
-            </div>
-        </section>
-        <section class="aa-section interactive-section">
-            <div class="aa-container reveal-aa">
-                <h3 class="aa-heading">[Título interactivo]</h3>
-                <p>[Texto explicativo]</p>
 
-                <div class="aa-interactive-container">
-                    <!-- Elementos interactivos -->
-                </div>
-            </div>
-        </section>
-        <section class="aa-section filmography-section">
-            <div class="aa-container reveal-aa">
-                <h3 class="aa-heading centered">Filmografía Selecta</h3>
-
-                <div class="film-scroller">
-
-                    <div class="film-card">
-                        <div class="film-year">2001</div>
-                        <div class="film-title">Los Otros</div>
+                <div class="aa-film-slide" data-title="Abre los ojos" data-year="1997">
+                    <img src="media/img/portada-abrelosojos.jpg" alt="Abre los ojos (1997)">
+                    <div class="aa-film-meta">
+                    <div class="aa-film-year">1997</div>
+                    <div class="aa-film-title">Abre los ojos</div>
                     </div>
+                </div>
 
-                    <!-- Repetir películas -->
+                <div class="aa-film-slide" data-title="Los Otros" data-year="2001">
+                    <img src="media/img/portada-losotros.webp" alt="Los Otros (2001)">
+                    <div class="aa-film-meta">
+                    <div class="aa-film-year">2001</div>
+                    <div class="aa-film-title">Los Otros</div>
+                    </div>
+                </div>
+
+                <div class="aa-film-slide" data-title="Mar adentro" data-year="2004">
+                    <img src="media/img/portada-mar.jpg" alt="Mar adentro (2004)">
+                    <div class="aa-film-meta">
+                    <div class="aa-film-year">2004</div>
+                    <div class="aa-film-title">Mar adentro</div>
+                    </div>
+                </div>
+
+                <div class="aa-film-slide" data-title="Ágora" data-year="2009">
+                    <img src="media/img/portada-agora.jpg" alt="Ágora (2009)">
+                    <div class="aa-film-meta">
+                    <div class="aa-film-year">2009</div>
+                    <div class="aa-film-title">Ágora</div>
+                    </div>
+                </div>
+
+                <div class="aa-film-slide" data-title="Regresión" data-year="2015">
+                    <img src="media/img/portada-regresion.jpg" alt="Regresión (2015)">
+                    <div class="aa-film-meta">
+                    <div class="aa-film-year">2015</div>
+                    <div class="aa-film-title">Regresión</div>
+                    </div>
+                </div>
+
+                <div class="aa-film-slide" data-title="Mientras dure la guerra" data-year="2019">
+                    <img src="media/img/portada-mientrasdurelaguerr.webp" alt="Mientras dure la guerra (2019)">
+                    <div class="aa-film-meta">
+                    <div class="aa-film-year">2019</div>
+                    <div class="aa-film-title">Mientras dure la guerra</div>
+                    </div>
+                </div>
+
+                <div class="aa-film-slide" data-title="El cautivo" data-year="2025">
+                    <img src="media/img/portada-elcautivo.jpg" alt="El cautivo (2025)">
+                    <div class="aa-film-meta">
+                    <div class="aa-film-year">2025</div>
+                    <div class="aa-film-title">El cautivo</div>
+                    </div>
+                </div>
 
                 </div>
             </div>
         </section>
+
         <footer class="aa-footer">
             <a href="index.html" class="back-home-btn">VOLVER AL PRINCIPIO</a>
         </footer>
