@@ -79,25 +79,25 @@ $(document).ready(function() {
         coppola: {
             name: "Sofia Coppola",
             desc: "Tu mundo es íntimo y melancólico. Encuentras belleza en el aislamiento y los silencios.",
-            img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6sEwXv4wH-fGgWJvG-Dq4q4q4q4q4q4q4q4&s",
+            img: "/media/img/Sofia-Coppola-Cara.jpg",
             link: "sofia-coppola.html"
         },
         anderson: {
             name: "Wes Anderson",
             desc: "Buscas el orden en el caos. Tu vida es una paleta de colores pastel y simetría perfecta.",
-            img: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Wes_Anderson_Venice_Film_Festival_2023.jpg/800px-Wes_Anderson_Venice_Film_Festival_2023.jpg",
+            img: "/media/img/Wes-Anderson-Cara.jpg",
             link: "wes-anderson.html"
         },
         villeneuve: {
             name: "Denis Villeneuve",
             desc: "Te atrae lo monumental y lo brutalista. Tu atmósfera es tensa, inmensa y visualmente impactante.",
-            img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Denis_Villeneuve_by_Gage_Skidmore.jpg/640px-Denis_Villeneuve_by_Gage_Skidmore.jpg",
+            img: "/media/img/Denise-Villenueve-Cara.jpg",
             link: "denis-villeneuve.html"
         },
         amenabar: {
             name: "Alejandro Amenábar",
             desc: "Vives entre luces y sombras. El misterio y la tensión psicológica definen tu espacio.",
-            img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Alejandro_Amen%C3%A1bar_2019.jpg/640px-Alejandro_Amen%C3%A1bar_2019.jpg",
+            img: "/media/img/Alejandro-Amenabar-Cara.jpg",
             link: "alejandro-amenabar.html"
         }
     };
@@ -210,19 +210,42 @@ $(document).ready(function() {
             wesObserver.observe(this);
         });
 
+        // Lógica del Slider Automático Wes Anderson
+        function startWesSlider() {
+            const $images = $('.slider-img');
+            let currentIndex = 0;
+
+            setInterval(function() {
+                $images.eq(currentIndex).removeClass('active');
+                currentIndex = (currentIndex + 1) % $images.length;
+
+                $images.eq(currentIndex).addClass('active');
+                
+            }, 4000);
+        }
+
+        $(document).ready(function() {
+            if ($('.wes-slider').length) {
+                startWesSlider();
+            }
+        });
+
 
         // 2. INTERACCIÓN DE PALETA DE COLORES (THEME SWITCHER)
         $('.color-strip').on('click', function() {
             const $this = $(this);
             const $wesRoot = $('.wes-anderson-page'); 
             const $feedback = $('#copy-feedback');
+
             const newBgColor = $this.attr('data-color');
             const newTextColor = $this.attr('data-text-color');
+            const newAccentColor = $this.attr('data-accent');
 
             navigator.clipboard.writeText(newBgColor);
 
             $wesRoot.css('--wes-bg', newBgColor);
             $wesRoot.css('--wes-text', newTextColor);
+            $wesRoot.css('--wes-accent', newAccentColor);
 
             if (newTextColor === '#FFFFFF' || newTextColor === '#FBF6E9') {
                 $wesRoot.css('--wes-bg-secondary', 'rgba(0,0,0,0.2)');
@@ -249,7 +272,45 @@ $(document).ready(function() {
        === WES ANDERSON PAGE JS END ===
        ========================================= */
 
+    // VILLENEUVE
+    if ($('.villeneuve-page').length) {
+        console.log("Modo Denis Villeneuve: Activado. Preparando escala brutalista.");
 
+        const dvObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        $('.reveal-dv').each(function() {
+            dvObserver.observe(this);
+        });
+
+        // Interacción de paleta de colores (similar a Wes)
+        $('.color-strip').on('click', function() {
+            const $strip = $(this);
+            const bgColor = $strip.data('color');
+            const textColor = $strip.data('text-color');
+            const accentColor = $strip.data('accent');
+
+            // Copiar al portapapeles
+            navigator.clipboard.writeText(bgColor).then(function() {
+                console.log('Color copiado: ' + bgColor);
+            });
+
+            $('#copy-feedback').text('¡Color Copiado!').fadeIn().delay(2000).fadeOut();
+
+            // Cambiar colores dinámicamente usando variables CSS
+            $('body').css('--dv-bg', bgColor);
+            $('body').css('--dv-text', textColor);
+            $('body').css('--dv-primary', accentColor);
+
+            $('#copy-feedback').text('¡Atmósfera Actualizada!').fadeIn().delay(2000).fadeOut();
+        });
+    }
+    // FIN DE VILLENEUVE
 
     //    AMENABAR
     /* NARRATIVE  CARDS*/
@@ -448,6 +509,41 @@ $(document).ready(function() {
 
     // END AMENABAR
 
+
+    // VILLENEUVE
+    if ($('.villeneuve-page').length) {
+        console.log("Modo Denis Villeneuve: Activado. Preparando escala brutalista.");
+
+        const dvObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        $('.reveal-dv').each(function() {
+            dvObserver.observe(this);
+        });
+
+        // Interacción del slider de escala
+        $('#scale-range').on('input', function() {
+            const value = $(this).val();
+            $('#scale-value').text(value);
+            // Aquí podrías añadir efectos visuales, como cambiar el tamaño de elementos
+            $('.dv-interactive-container').css('transform', `scale(${1 + value / 100})`);
+        });
+
+        // Hover en el hero para cambiar imagen
+        $('.dv-hero-content').hover(function() {
+            $('.dv-bg--base').stop().animate({ opacity: 0 }, 500);
+            $('.dv-bg--hover').stop().animate({ opacity: 1 }, 500);
+        }, function() {
+            $('.dv-bg--base').stop().animate({ opacity: 1 }, 500);
+            $('.dv-bg--hover').stop().animate({ opacity: 0 }, 500);
+        });
+    }
+    // FIN DE VILLENEUVE
 
     console.log("Sistema jQuery cargado correctamente.");
 });
