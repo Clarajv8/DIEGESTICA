@@ -355,8 +355,9 @@ $(document).ready(function() {
             }
 
             const $aaRoot = $('.amenabar-page');
-            $aaRoot.css('--aa-surface', newBgColor);
-            $aaRoot.css('--aa-surface-text', newTextColor);
+            $aaRoot.css('--aa-bg', newBgColor);
+            $aaRoot.css('--aa-text', newTextColor);
+
 
             const $feedback = $('#aa-copy-feedback');
             $feedback
