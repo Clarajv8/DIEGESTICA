@@ -1194,7 +1194,7 @@ body {
     color: var(--aa-text);
 }
 
-/* NO HOVER */
+/* AMENABAR HERO NO HOVER */
 .aa-hero-content .director-quote {
   opacity: 0;
   transform: translateY(8px);
@@ -1212,7 +1212,7 @@ body {
   transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
-/* HOVER */
+/*AMENABAR HERO HOVER */
 .aa-hero-content:hover .director-quote {
   opacity: 1;
   transform: translateY(0);
@@ -1234,9 +1234,9 @@ body {
 .aa-hero:has(.aa-hero-content:hover) .aa-bg--base { opacity: 0; }
 .aa-hero:has(.aa-hero-content:hover) .aa-bg--hover { opacity: 1; }
 
-/* ABOUT AA */
+/* AMENABAR ABOUT */
 .aa-narrative-section {
-    min-height: 100vh; max-width: 100vw; height: calc(100vh - 4.375rem);
+    max-width: 100vw; height: calc(100vh - 20vh);
     padding: 3vh 3vw; background-color: var(--color-fondo-secundario);
     display: flex; align-items: center; justify-content: center; box-sizing: border-box;
     position: relative; z-index: 1; 
@@ -1485,6 +1485,8 @@ body {
     z-index: 1;
 }
 
+/* AMENABAR FOOTER */
+
 .aa-footer { 
     text-align: center; 
     padding: 3em; 
@@ -1502,8 +1504,7 @@ body {
     font-family: var(--font-serif);
 }
 .back-home-btn:hover { 
-    background: var(--aa-text); 
-    color: var(--aa-bg); 
+    color: var(--aa-text); 
 }
 
 
