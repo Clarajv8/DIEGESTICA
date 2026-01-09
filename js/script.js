@@ -343,6 +343,35 @@ $(document).ready(function() {
     $area.on('pointerup pointercancel pointerleave', endDrag);
     })();
 
+    // PALETA INTERACTIVA
+    if ($('.amenabar-page').length) {
+        $('.aa-color-strip').on('click', function () {
+            const $this = $(this);
+            const newBgColor = $this.attr('data-color');
+            const newTextColor = $this.attr('data-text-color') || 'var(--aa-text)';
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(newBgColor);
+            }
+
+            const $aaRoot = $('.amenabar-page');
+            $aaRoot.css('--aa-surface', newBgColor);
+            $aaRoot.css('--aa-surface-text', newTextColor);
+
+            const $feedback = $('#aa-copy-feedback');
+            $feedback
+            .text(`Atmósfera actualizada: ${newBgColor}`)
+            .css({ color: newTextColor, opacity: 1 });
+
+            setTimeout(function () {
+            $feedback.css('opacity', 0);
+            }, 2000);
+        });
+    }
+
+
+    // END AMENABAR
+
 
     console.log("Sistema jQuery cargado correctamente.");
 });
