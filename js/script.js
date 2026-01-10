@@ -313,6 +313,13 @@ $(document).ready(function() {
     // FIN DE VILLENEUVE
 
     //    AMENABAR
+    // AMENÁBAR HERO
+    if (window.matchMedia('(max-width: 1024px)').matches) {
+        $('.aa-hero-content').on('click', function () {
+            $(this).toggleClass('is-active');
+        });
+    }
+
     /* NARRATIVE  CARDS*/
 
     (function enableAmenabarDragCards() {
@@ -407,6 +414,8 @@ $(document).ready(function() {
     // PALETA INTERACTIVA
     if ($('.amenabar-page').length) {
         $('.aa-color-strip').on('click', function () {
+            $('.aa-color-strip').removeClass('is-active');
+            $(this).addClass('is-active');
             const $this = $(this);
             const newBgColor = $this.attr('data-color');
             const newTextColor = $this.attr('data-text-color') || 'var(--aa-text)';

@@ -1545,8 +1545,51 @@ body {
     color: var(--aa-text); 
 }
 
+/* AA TABLET */
+@media (max-width: 1024px) {
 
-/* accesibilidad y tacto */
+    .aa-hero {
+        height: 70vh;
+    }
+    .aa-hero-content.is-active .director-quote {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .aa-hero-content.is-active .director-title,
+  .aa-hero-content.is-active .director-label {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  .aa-narrative-section {
+    height: auto;
+  }
+
+  .aa-color-strip:hover {
+    flex: 1;
+  }
+  .aa-color-strip.is-active {
+    flex: 2;
+  }
+  .aa-color-strip.is-active span {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .aa-vert-carousel {
+    width: auto;
+  }
+   .aa-film-slide {
+    cursor: pointer;
+  }
+  .aa-film-slide.is-prev,
+  .aa-film-slide.is-next {
+    opacity: 0.35;
+  }
+
+}
+
+/* AA MOVIL */
 @media (max-width: 768px){
   .aa-vert-carousel{ height: 460px; }
   .aa-film-slide.is-prev{ transform: translate(-50%, calc(-50% - 150px)) scale(0.86); }
