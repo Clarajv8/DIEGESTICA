@@ -1514,8 +1514,6 @@ body {
   .aa-film-slide.is-next{ transform: translate(-50%, calc(-50% + 150px)) scale(0.86); }
 }
 
-=======
-
 /* =========================================
    === SOFIA COPPOLA PAGE STYLES START ===
    ========================================= */
@@ -1525,14 +1523,14 @@ body {
     --copp-bg-secondary: #FBF6E9; 
     --copp-subtle:#ffd7ca;
     --copp-text:#534548;
-    --copp-red:#f75b72;
+    --copp-red:#A0535E;
     --copp-pink:#f59fac;
     --copp-blue:#0021ff;
     --font-copp-title: 'Montserrat', sans-serif; 
-
-    background-color: var(--copp-bg);
+    --font-copp-subtitle: 'Bodoni Moda', serif;
     color: var(--copp-text);
     overflow-x: hidden;
+    background-color: var(--copp-bg-secondary);
 }
 
 .copp-nav {
@@ -1555,9 +1553,7 @@ body {
     width: 100%;
     height: 100vh;
     overflow: hidden;
-    margin: 0 0 3em 0;
 }
-
 
 .copp-hero-bg {
     position: absolute;
@@ -1642,25 +1638,311 @@ body {
 .copp-hero:has(.copp-hero-content:hover) .copp-bg--base { opacity: 0; }
 .copp-hero:has(.copp-hero-content:hover) .copp-bg--hover { opacity: 1; }
 
-.copp-section { padding: 80px 20px; }
-.pastel-bg { background-color: var(--wes-static-cream); border-top: 2px solid #fff; border-bottom: 2px solid #fff; }
-.copp-container { max-width: 900px; margin: 0 auto; }
+/* COPPOLA SECCIONES */
+.copp-narrative-section {
+    background-color:#FBF6E9 !important;
+    color: var(--copp-text) !important;
+    padding: 4em 5%;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
+.copp-narrative-section h3, 
+.copp-narrative-section p, 
+.copp-narrative-section strong {
+    background-color: #FBF6E9 !important;
+}
+
+/* --- SECCIONES QUE SÍ CAMBIAN (DINÁMICAS) --- */
+.copp-palette-section,
+.copp-ticket-section,
+.copp-footer {
+    background-color: var(--copp-bg-secondary) !important;
+    color: var(--copp-text);
+}
 
 .copp-heading {
-    font-family: var(--font-copp-title); font-size: 1.5rem; text-transform: uppercase;
-    letter-spacing: 3px; margin-bottom: 40px;
-    border-bottom: 3px solid var(--copp-bg-secondary); display: inline-block; padding-bottom: 10px;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--copp-red);
+    margin-bottom: 1em;
+    display: inline-block;
+    padding-bottom: 0.2em;
+    text-wrap: balance;
 }
-.copp-heading.centered { display: block; text-align: center; border-bottom: none; position: relative;}
-.copp-heading.centered::after { content:''; display: block; width: 60px; height: 3px; background: var(--copp-bg-secondary); margin: 15px auto 0;}
 
-.two-column-grid { display: flex; gap: 40px; align-items: center; }
-.text-col p { margin-bottom: 20px; line-height: 1.7; }
-.text-col strong { color: var(--copp-text); }
+.copp-two-column-grid {
+    display: flex;
+    gap: 3em;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 65em;
+    margin: 0 auto;
+}
+
+.copp-text-col {
+    flex: 0 1 55%;
+    min-width: 18em;
+}
+
+.copp-text-col p {
+    margin-bottom: 1em;
+    line-height: 1.5;
+    font-size: 1em;
+    text-wrap: pretty;
+}
+
+.copp-img-col {
+    flex: 2 1 30%;
+    max-width: 20em;
+    min-width: 12em;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.copp-img-col img {
+    width: 100%;
+    height: auto; 
+    aspect-ratio: 2 / 3; 
+    object-fit: cover;
+    border-radius: 0.2em;
+    box-shadow: 0.8em 0.8em 0px var(--copp-subtle);
+    transition: transform 0.4s ease;
+}
+
+/* MARQUEE SOFIA COPPOLA  */
+.copp-marquee-box {
+    width: 100% !important;
+    background-color: #FBF6E9 !important;
+    padding: 2.8rem 0 !important; 
+    overflow: hidden !important;
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    border-top: 0.5px solid rgba(83, 69, 72, 0.1);
+    border-bottom: 0.5px solid rgba(83, 69, 72, 0.1);
+    
+    -webkit-mask-image: linear-gradient(
+        to bottom, 
+        black 0%, 
+        black 60%, 
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to bottom, 
+        black 0%, 
+        black 60%, 
+        transparent 100%
+    );
+}
+
+.copp-marquee-mover {
+    display: flex !important;
+    width: max-content !important;
+    animation: copp-slide-lux 45s linear infinite !important;
+}
+
+.copp-marquee-mover span {
+    display: inline-block !important;
+    white-space: nowrap !important;
+    font-family: var(--font-copp-subtitle) !important;
+    font-style: italic !important;
+    font-size: 0.75rem !important;
+    letter-spacing: 4px !important;
+    color: #534548 !important;
+    opacity: 0.5 !important;
+    text-transform: lowercase !important;
+    padding-right: 0.5rem !important;
+    margin-right: 0 !important;
+}
+@keyframes copp-slide-lux {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-25%); }
+}
+
+/*PALETA INTERACTIVA */
+.copp-palette-section { 
+    padding: 5em 2em;   
+    text-align:center;
+}
+
+copp-palette-sub{
+    margin-bottom: 2em;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+.copp-color-palette-container{
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    height: 180px !important;
+    width: 100% !important;
+    max-width: 900px;
+    margin: 2em auto;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 5px solid #fff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    cursor: pointer;
+}
+
+.copp-color-strip {
+    flex: 1 1 0% !important; 
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    justify-content: center !important;
+    padding-bottom: 20px !important;
+    cursor: pointer !important;
+    position: relative !important;
+    transition: flex 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.copp-color-palette-container:hover .copp-color-strip:hover {
+    flex: 4 1 0% !important;
+}
+
+.copp-color-strip span{
+    display: inline-block !important;
+    visibility: visible !important;
+    position: absolute !important;
+    bottom: 25px; 
+    z-index: 10 !important;
+
+    font-family: var(--font-copp-title);
+    font-size: 0.7em; 
+    letter-spacing: 1.2px;
+    font-weight: 800;
+    text-transform: uppercase;
+    
+    background: #ffffff !important;
+    color: #534548 !important;
+    padding: 3px 7px !important; 
+    border-radius: 2px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    
+    opacity: 0;
+    transform: translateY(10px) !important;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.copp-color-strip:hover{ 
+    flex:3; 
+}
+
+.copp-color-strip:hover span{ 
+    opacity:1; 
+    transform: translateY(0); }
+
+#copp-copy-feedback{
+  margin-top: 30px;
+    font-family: var(--font-copp-title);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 2rem;
+    color: #534548;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    display: block;
+    text-align: center;
+}
 
 
-.three-column-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+/* --- SISTEMA RESPONSIVE ELÁSTICO COPPOLA --- */
+@media (max-width: 48em) {
+    .copp-hero-content .director-title,
+    .copp-hero-content .director-label {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    
+    .copp-hero-content .director-quote {
+        position: relative;
+        opacity: 1;
+        transform: none;
+        margin-top: 1em;
+        font-size: 1.1em;
+    }
+}
 
+@media (max-width: 64em) {
+    .copp-container {
+        max-width: 90%;
+    }
+    
+    .copp-two-column-grid {
+        gap: 3em;
+    }
+
+    .copp-text-col {
+        flex: 1 1 50%;
+    }
+}
+
+@media (max-width: 48em) {
+    .copp-narrative-section {
+        padding: 3em 1.5em;
+    }
+
+    .copp-two-column-grid {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .copp-heading {
+        display: block;
+        margin: 0 auto 1.5em;
+    }
+
+    .copp-text-col, 
+    .copp-img-col {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .copp-img-col img {
+        width: 60%;
+        min-width: 12em;
+        box-shadow: 0.6em 0.6em 0px var(--copp-subtle);
+    }
+}
+
+@media (max-width: 30em) {
+    .copp-hero-content h1 {
+        font-size: 2.2em;
+    }
+
+    .copp-hero-content .director-quote {
+        font-size: 1.2em;
+        padding: 0 1em;
+    }
+
+    .copp-img-col img {
+        width: 85%;
+    }
+
+    .copp-text-col p {
+        font-size: 1em;
+        line-height: 1.5;
+    }
+}
 /* =========================================
    === SOFIA COPPOLA PAGE STYLES END ===
    ========================================= */
