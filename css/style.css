@@ -1131,18 +1131,56 @@ body {
 /* AMENABAR HEADER*/
 .aa-nav {
     mix-blend-mode: normal !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backdrop-filter: blur(6px); 
     background: transparent;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(6px);
+    
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000; 
+    
+    border-bottom: 1px solid var(--aa-text);
 }
 
-.aa-nav .brand a,
-.aa-nav nav a {
-    color: var(--white);
+.aa-nav nav {
+    display: flex;
+    gap: 20px;
+}
+
+.aa-nav nav a.nav-btn {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--aa-text);
+    padding: 2em;
+
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    font-weight: 700;
+}
+
+.aa-nav nav a.nav-btn:hover {
+    transform: scale(1.1) translateY(-2px);
+}
+
+.aa-nav .brand a {
+    font-size: 1.2rem;
+}
+
+.aa-nav .brand a, .aa-nav nav a {
+    color: var(--aa-text) !important;
     opacity: 1 !important;
     text-decoration: none;
     font-weight: 600;
 }
+
 
 /* AMENABAR HERO */
 
