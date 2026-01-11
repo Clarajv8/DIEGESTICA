@@ -509,6 +509,44 @@ $(document).ready(function() {
 
     // END AMENABAR
 
+    // COPPOLA
+    // Paletta Interactiva
+    $(document).ready(function() {
+    if ($('.copp-page').length) {
+        $('.copp-color-strip').on('click', function () {
+            const $this = $(this);
+            const newBgColor = $this.attr('data-color');
+            const newTextColor = $this.attr('data-text-color') || '#534548';
+
+            // Copiar
+            if (navigator.clipboard) navigator.clipboard.writeText(newBgColor);
+
+            // Cambiar variables CSS
+            $('.copp-page').css({
+                '--copp-bg': newBgColor,
+                '--copp-bg-secondary': newBgColor, // Cambia también el secundario para uniformidad
+                '--copp-text': newTextColor
+            });
+
+            // Feedback
+            $('#copp-copy-feedback')
+                .text(`Atmósfera: ${newBgColor}`)
+                .css({ 
+                    'opacity': 1,
+                    'color': '#534548',
+                    'background-color': '#fff',
+                    'padding': '8px 16px',
+                    'display': 'inline-block',
+                    'border-radius': '4px',
+                    'font-size': '12px',
+                    'box-shadow': '0 4px 10px rgba(0,0,0,0.1)'
+                });
+
+            setTimeout(() => $('#copp-copy-feedback').css('opacity', 0), 2000);
+        });
+    }
+});
+
 
     // VILLENEUVE
     if ($('.villeneuve-page').length) {
