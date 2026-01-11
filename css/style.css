@@ -1131,18 +1131,56 @@ body {
 /* AMENABAR HEADER*/
 .aa-nav {
     mix-blend-mode: normal !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    backdrop-filter: blur(6px); 
     background: transparent;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(6px);
+    
+    padding: 20px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000; 
+    
+    border-bottom: 1px solid var(--aa-text);
 }
 
-.aa-nav .brand a,
-.aa-nav nav a {
-    color: var(--white);
+.aa-nav nav {
+    display: flex;
+    gap: 20px;
+}
+
+.aa-nav nav a.nav-btn {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--aa-text);
+    padding: 2em;
+
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    font-weight: 700;
+}
+
+.aa-nav nav a.nav-btn:hover {
+    transform: scale(1.1) translateY(-2px);
+}
+
+.aa-nav .brand a {
+    font-size: 1.2rem;
+}
+
+.aa-nav .brand a, .aa-nav nav a {
+    color: var(--aa-text) !important;
     opacity: 1 !important;
     text-decoration: none;
     font-weight: 600;
 }
+
 
 /* AMENABAR HERO */
 
@@ -1194,7 +1232,7 @@ body {
     color: var(--aa-text);
 }
 
-/* NO HOVER */
+/* AMENABAR HERO NO HOVER */
 .aa-hero-content .director-quote {
   opacity: 0;
   transform: translateY(8px);
@@ -1212,7 +1250,7 @@ body {
   transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
-/* HOVER */
+/*AMENABAR HERO HOVER */
 .aa-hero-content:hover .director-quote {
   opacity: 1;
   transform: translateY(0);
@@ -1234,9 +1272,9 @@ body {
 .aa-hero:has(.aa-hero-content:hover) .aa-bg--base { opacity: 0; }
 .aa-hero:has(.aa-hero-content:hover) .aa-bg--hover { opacity: 1; }
 
-/* ABOUT AA */
+/* AMENABAR ABOUT */
 .aa-narrative-section {
-    min-height: 100vh; max-width: 100vw; height: calc(100vh - 4.375rem);
+    max-width: 100vw; height: calc(100vh - 20vh);
     padding: 3vh 3vw; background-color: var(--color-fondo-secundario);
     display: flex; align-items: center; justify-content: center; box-sizing: border-box;
     position: relative; z-index: 1; 
@@ -1286,6 +1324,101 @@ body {
 }
 .aa-narrative-card:active { cursor: grabbing; }
 .aa-narrative-card-label { color: #fff; text-shadow: 0 0.1rem 0.35rem rgba(0,0,0,0.4); }
+
+/*   AMENÁBAR — CARACTERÍSTICAS */
+.aa-container {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.aa-bg {
+  background-color: var(--aa-surface);
+  color: var(--aa-surface-text);
+  display: block;
+  align-items: center;
+  text-align: center;
+}
+
+.amenabar-page .aa-bg .aa-heading.centered {
+  color: var(--aa-text);
+  font-family: var(--font-serif);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+
+.aa-subtitle {
+  color: rgba(255,248,209,0.75);
+  font-family: var(--font-sans);
+  letter-spacing: 0.08em;
+  margin-bottom: 1em;
+}
+
+.aa-props-grid {
+  gap: 2em;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+
+.aa-prop-card {
+  border: 1px solid rgba(255,248,209,0.18);
+  box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.115);
+  color: var(--aa-text);
+  backdrop-filter: blur(6px);
+  overflow: hidden;
+}
+
+.aa-prop-card:hover {
+  transform: translate(-5px, -5px);
+  box-shadow: 15px 15px 0px rgba(85, 9, 9, 0.329); 
+}
+
+.aa-prop-badge {
+  background:var(--aa-surface);
+  color: var(--aa-text);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  z-index: 10;
+}
+
+.aa-prop-image img {
+  filter: saturate(0.9) contrast(1.08);
+  transition: transform 0.5s ease, filter 0.5s ease;
+    filter: blur(6px);
+}
+
+.aa-prop-card:hover .aa-prop-image img {
+  transform: scale(1.05);
+  filter: saturate(1) contrast(1.1);
+    filter: blur(0px);
+}
+
+.aa-prop-card h4 {
+    padding: 0.5rem;
+    font-family: var(--font-serif);
+    color: var(--aa-text);
+    text-transform: uppercase;
+    font-size: 1.2em;
+    letter-spacing: 0.12em;
+
+}
+.aa-prop-category {
+  color: var(--aa-text);
+  font-family: var(--font-serif);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.aa-prop-desc {
+  color: rgba(255,248,209,0.78);
+  font-family: var(--font-sans);
+  font-style: normal;
+}
 
 /* AMENABAR: COLORES PARA SECCIONES (fondo dinámico) */
 .amenabar-page{
@@ -1485,6 +1618,8 @@ body {
     z-index: 1;
 }
 
+/* AMENABAR FOOTER */
+
 .aa-footer { 
     text-align: center; 
     padding: 3em; 
@@ -1502,12 +1637,69 @@ body {
     font-family: var(--font-serif);
 }
 .back-home-btn:hover { 
-    background: var(--aa-text); 
-    color: var(--aa-bg); 
+    color: var(--aa-text); 
 }
 
+/* AA TABLET */
+@media (max-width: 1024px) {
 
-/* accesibilidad y tacto */
+    .aa-hero {
+        height: 70vh;
+    }
+    .aa-hero-content.is-active .director-quote {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .aa-hero-content.is-active .director-title,
+  .aa-hero-content.is-active .director-label {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  .aa-narrative-section {
+    height: auto;
+  }
+
+  .aa-prop-card:hover {
+    transform: none; 
+  }
+
+  .aa-prop-card.is-active {
+    transform: translate(-5px, -5px);
+    box-shadow: 15px 15px 0px rgba(85, 9, 9, 0.55);
+    border-color: rgba(255,248,209,0.35);
+  }
+
+  .aa-prop-card.is-active .aa-prop-image img {
+    transform: scale(1.05);
+    filter: saturate(1) contrast(1.1);
+  }
+
+  .aa-color-strip:hover {
+    flex: 1;
+  }
+  .aa-color-strip.is-active {
+    flex: 2;
+  }
+  .aa-color-strip.is-active span {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .aa-vert-carousel {
+    width: auto;
+  }
+   .aa-film-slide {
+    cursor: pointer;
+  }
+  .aa-film-slide.is-prev,
+  .aa-film-slide.is-next {
+    opacity: 0.35;
+  }
+
+}
+
+/* AA MOVIL */
 @media (max-width: 768px){
   .aa-vert-carousel{ height: 460px; }
   .aa-film-slide.is-prev{ transform: translate(-50%, calc(-50% - 150px)) scale(0.86); }
@@ -2428,4 +2620,3 @@ copp-palette-sub{
 /* =========================================
 === DENIS VILLENEUVE PAGE STYLES END ===
 ========================================= */
-
