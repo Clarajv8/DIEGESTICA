@@ -515,6 +515,17 @@ $(document).ready(function() {
     io.observe($carousel[0]);
     })();
 
+    // AA CARACTERÍSTICAS - TABLET&MOVIL
+    if ($('.amenabar-page').length && window.matchMedia('(max-width: 1024px)').matches) {
+        $(document).on('click', '.aa-bg .aa-prop-card', function(e){
+            e.stopPropagation();
+            $(this).toggleClass('is-active').siblings().removeClass('is-active');
+        });
+
+        $(document).on('click', function(){
+            $('.aa-bg .aa-prop-card').removeClass('is-active');
+        });
+    }
 
     // END AMENABAR
 

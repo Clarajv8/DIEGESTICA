@@ -1325,6 +1325,101 @@ body {
 .aa-narrative-card:active { cursor: grabbing; }
 .aa-narrative-card-label { color: #fff; text-shadow: 0 0.1rem 0.35rem rgba(0,0,0,0.4); }
 
+/*   AMENÁBAR — CARACTERÍSTICAS */
+.aa-container {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.aa-bg {
+  background-color: var(--aa-surface);
+  color: var(--aa-surface-text);
+  display: block;
+  align-items: center;
+  text-align: center;
+}
+
+.amenabar-page .aa-bg .aa-heading.centered {
+  color: var(--aa-text);
+  font-family: var(--font-serif);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+
+.aa-subtitle {
+  color: rgba(255,248,209,0.75);
+  font-family: var(--font-sans);
+  letter-spacing: 0.08em;
+  margin-bottom: 1em;
+}
+
+.aa-props-grid {
+  gap: 2em;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+
+.aa-prop-card {
+  border: 1px solid rgba(255,248,209,0.18);
+  box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.115);
+  color: var(--aa-text);
+  backdrop-filter: blur(6px);
+  overflow: hidden;
+}
+
+.aa-prop-card:hover {
+  transform: translate(-5px, -5px);
+  box-shadow: 15px 15px 0px rgba(85, 9, 9, 0.329); 
+}
+
+.aa-prop-badge {
+  background:var(--aa-surface);
+  color: var(--aa-text);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  z-index: 10;
+}
+
+.aa-prop-image img {
+  filter: saturate(0.9) contrast(1.08);
+  transition: transform 0.5s ease, filter 0.5s ease;
+    filter: blur(6px);
+}
+
+.aa-prop-card:hover .aa-prop-image img {
+  transform: scale(1.05);
+  filter: saturate(1) contrast(1.1);
+    filter: blur(0px);
+}
+
+.aa-prop-card h4 {
+    padding: 0.5rem;
+    font-family: var(--font-serif);
+    color: var(--aa-text);
+    text-transform: uppercase;
+    font-size: 1.2em;
+    letter-spacing: 0.12em;
+
+}
+.aa-prop-category {
+  color: var(--aa-text);
+  font-family: var(--font-serif);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.aa-prop-desc {
+  color: rgba(255,248,209,0.78);
+  font-family: var(--font-sans);
+  font-style: normal;
+}
+
 /* AMENABAR: COLORES PARA SECCIONES (fondo dinámico) */
 .amenabar-page{
   --aa-surface: var(--aa-bg);     
@@ -1563,6 +1658,21 @@ body {
 
   .aa-narrative-section {
     height: auto;
+  }
+
+  .aa-prop-card:hover {
+    transform: none; 
+  }
+
+  .aa-prop-card.is-active {
+    transform: translate(-5px, -5px);
+    box-shadow: 15px 15px 0px rgba(85, 9, 9, 0.55);
+    border-color: rgba(255,248,209,0.35);
+  }
+
+  .aa-prop-card.is-active .aa-prop-image img {
+    transform: scale(1.05);
+    filter: saturate(1) contrast(1.1);
   }
 
   .aa-color-strip:hover {
