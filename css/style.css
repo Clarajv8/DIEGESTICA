@@ -1533,11 +1533,106 @@ body {
     background-color: var(--copp-bg-secondary);
 }
 
+/* animacion */
+#copp-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 3000;
+
+  background: rgba(251, 246, 233, 0.7); 
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #534548;
+  border: 1px solid rgba(160, 83, 94, 0.3);
+  padding: 14px 28px;
+  border-radius: 100px;
+  font-family: var(--font-copp-title);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+
+}
+
+#copp-fallingElementsContainer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2500;
+}
+
+#copp-button:hover {
+  background: var(--copp-red);
+  color: #FBF6E9;
+  transform: translateY(-5px);
+  letter-spacing: 5px;
+  box-shadow: 0 10px 25px rgba(160, 83, 94, 0.2);
+  border-color: transparent;
+}
+
+#copp-button:active {
+  transform: translateY(-2px);
+}
+
+#copp-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.copp-falling-object {
+  position: fixed;
+    top: -50px;
+    pointer-events: none;
+
+    color: #FBF6E9; 
+    opacity: 0.6;
+    mix-blend-mode: screen; 
+    
+    font-family: var(--font-copp-title);
+    animation-name: copp-fall;
+    animation-timing-function: linear;
+    z-index: 2500; /* Por encima del overlay del hero */
+    white-space: nowrap;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2); /* Un leve brillo */
+}
+
+.copp-falling-object.is-text {
+    font-family: var(--font-copp-subtitle);
+    font-style: italic;
+    letter-spacing: 2px;
+    text-transform: lowercase;
+}
+
+@keyframes copp-fall {
+    0% {
+        transform: translateY(-5vh) rotate(0deg);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.7; /* Se vuelve visible rápido */
+    }
+    85% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(105vh) rotate(20deg);
+        opacity: 0;
+    }
+}
+
+/* COPPOLA HEADER*/
 .copp-nav {
     mix-blend-mode: normal !important;
     background: transparent;
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(6px);
+    position: fixed; /* o sticky */
+    z-index: 1000;
 }
 
 .copp-nav .brand a,
@@ -1943,6 +2038,15 @@ copp-palette-sub{
         line-height: 1.5;
     }
 }
+
+@media (max-width: 768px) {
+  #copp-Button {
+    bottom: 20px;
+    right: 20px;
+    font-size: 12px;
+  }
+}
+
 /* =========================================
    === SOFIA COPPOLA PAGE STYLES END ===
    ========================================= */

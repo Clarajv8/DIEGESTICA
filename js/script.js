@@ -510,6 +510,69 @@ $(document).ready(function() {
     // END AMENABAR
 
     // COPPOLA
+    // Animacion
+   const coppContainer = document.getElementById("copp-container");
+   const coppButton = document.getElementById("copp-button");
+   const coppObjects = [
+    "✧", "✦", "†", "soft focus", "melancholy", 
+    "Tokyo", "Versailles", "dreamy", "lost", 
+    "rose", "youth", "silence", "poudre", "neon",
+    "🎀", "💄", "🍰", "🍷", "🎥", "📼", "🦢",
+    "pancakes", "ballet", "chateau", "lonely girl",
+    "✨", "☁️", "🎧", "🍓", "🚬", "🏩"];
+
+    function coppCreateFallingObject() {
+    if (!coppContainer) return;
+
+    const el = document.createElement("div");
+    el.classList.add("copp-falling-object");
+
+    const content = coppObjects[Math.floor(Math.random() * coppObjects.length)];
+    el.innerText = content;
+
+    if (content.length > 2) {
+        el.classList.add("is-text");
+    }else {
+        el.classList.add("is-emoji");
+    }
+
+    el.style.left = Math.random() * 98 + "vw";
+    const isEmoji = el.classList.contains("is-emoji");
+    const size = isEmoji ? (Math.random() * 12 + 20) : (Math.random() * 8 + 14);
+    el.style.fontSize = size + "px";
+
+    const duration = Math.random() * 6 + 4;
+    el.style.animationDuration = duration + "s";
+
+    const startRotation = Math.random() * 360;
+    el.style.setProperty('--start-rotation', `${startRotation}deg`);
+
+    const spinRotation = (Math.random() > 0.5 ? 360 : -360) + startRotation;
+    el.style.setProperty('--spin-rotation', `${spinRotation}deg`);
+
+    el.style.opacity = Math.random() * 0.5 + 0.3;
+
+    coppContainer.appendChild(el);
+
+    setTimeout(() => {
+        el.remove();
+    }, duration * 1000);
+    }
+
+    function coppStartRain(amount = 30) {
+    for (let i = 0; i < amount; i++) {
+        setTimeout(coppCreateFallingObject, i * 100);
+    }
+    }
+
+    if (coppButton) {
+        coppButton.addEventListener("click", () => {
+            coppStartRain(45); 
+        });
+    }
+
+    coppStartRain(25);
+
     // Paletta Interactiva
     $(document).ready(function() {
     if ($('.copp-page').length) {
@@ -518,13 +581,11 @@ $(document).ready(function() {
             const newBgColor = $this.attr('data-color');
             const newTextColor = $this.attr('data-text-color') || '#534548';
 
-            // Copiar
             if (navigator.clipboard) navigator.clipboard.writeText(newBgColor);
 
-            // Cambiar variables CSS
             $('.copp-page').css({
                 '--copp-bg': newBgColor,
-                '--copp-bg-secondary': newBgColor, // Cambia también el secundario para uniformidad
+                '--copp-bg-secondary': newBgColor,
                 '--copp-text': newTextColor
             });
 
