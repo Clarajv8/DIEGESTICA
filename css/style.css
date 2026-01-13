@@ -2151,6 +2151,162 @@ copp-palette-sub{
     text-align: center;
 }
 
+/* --- SECCIÓN TICKETS COPPOLA --- */
+.copp-ticket-section {
+    padding: 80px 0;
+    background-color: var(--copp-bg-secondary);
+}
+
+/* Títulos decorados */
+.copp-heading.centered {
+    text-align: center;
+    display: block;
+    margin: 0 auto 3rem auto;
+    font-family: var(--font-copp-subtitle);
+    font-style: italic;
+    font-size: 2.2rem;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+/* Línea decorativa debajo de los títulos */
+.copp-heading.centered::after {
+    content: '✧';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    color: var(--copp-red);
+    opacity: 0.6;
+}
+
+.copp-ticket-wrapper {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+.copp-ticket-scroller {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    padding: 20px 5%;
+    scrollbar-width: thin;
+    scrollbar-color: var(--copp-red) rgba(83, 69, 72, 0.1);
+}
+
+.copp-ticket-scroller::-webkit-scrollbar {
+    height: 3px; /* Muy fina */
+    display: block !important;
+}
+
+.copp-ticket-scroller::-webkit-scrollbar-track {
+    background: rgba(83, 69, 72, 0.05);
+    border-radius: 10px;
+}
+
+.copp-ticket-scroller::-webkit-scrollbar-thumb {
+    background: var(--copp-red);
+    border-radius: 10px;
+    opacity: 0.5;
+}
+
+.copp-movie-ticket {
+    flex-shrink: 0;
+    min-width: 280px;
+    height: 150px;
+    background-color: #FBF6E9;
+    border: 1px solid rgba(83, 69, 72, 0.2);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    transition: transform 0.4s ease;
+    box-shadow: 5px 5px 0px var(--copp-subtle);
+}
+
+/* Efecto de perforación de ticket */
+.copp-movie-ticket::before,
+.copp-movie-ticket::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: var(--copp-bg-secondary);
+    border: 1px solid rgba(83, 69, 72, 0.2);
+    border-radius: 50%;
+}
+
+.copp-movie-ticket::before { left: -11px; transform: translateY(-50%); }
+.copp-movie-ticket::after { right: -11px; transform: translateY(-50%); }
+
+.copp-movie-ticket:hover {
+    transform: rotate(-2deg) translateY(-10px);
+}
+
+.copp-ticket-date {
+    font-family: var(--font-copp-title);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: var(--copp-red);
+    margin-bottom: 10px;
+}
+
+.copp-ticket-title {
+    font-family: var(--font-copp-subtitle);
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--copp-text);
+    text-align: center;
+}
+
+.copp-ticket-deco {
+    margin-top: 15px;
+    font-size: 0.6rem;
+    letter-spacing: 4px;
+    opacity: 0.4;
+    border-top: 1px dashed rgba(83, 69, 72, 0.3);
+    padding-top: 10px;
+    width: 80%;
+    text-align: center;
+}
+
+.copp-footer {
+    padding: 100px 0;
+    text-align: center;
+    background-color: var(--copp-bg-secondary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-home-btn {
+    display: inline-block;
+    padding: 18px 45px;
+    background-color: transparent;
+    color: var(--copp-text);
+    border: 1px solid rgba(83, 69, 72, 0.3);
+    font-family: var(--font-copp-title);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    text-decoration: none;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    border-radius: 0; /* Cuadrado para look editorial */
+}
+
+.back-home-btn:hover {
+    background-color: var(--copp-text);
+    color: #FBF6E9;
+    letter-spacing: 6px;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
 
 /* --- SISTEMA RESPONSIVE ELÁSTICO COPPOLA --- */
 @media (max-width: 48em) {
