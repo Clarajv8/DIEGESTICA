@@ -1751,36 +1751,6 @@ body {
     background-color: var(--copp-bg-secondary);
 }
 
-.copp-diary-section {
-    position: relative;
-    border-left-right: 1px solid rgba(160, 83, 94, 0.2);
-    margin: 0 40px; 
-    padding: 100px 0;
-}
-
-/* SEPARADOR DENTRO DE LAS TARJETAS (.copp-line) */
-.copp-line {
-    width: 100% !important;
-    height: 1px !important;
-    background: linear-gradient(to right, var(--copp-red) 30%, transparent) !important;
-    margin: 15px 0 !important;
-    opacity: 0.3 !important;
-    display: block !important;
-}
-
-/* TARJETAS CON SOMBRA MÁS FUERTE */
-.copp-diary-entry.archive-card {
-    background: #fff !important;
-    border: 1px solid rgba(83, 69, 72, 0.1) !important;
-    box-shadow: 12px 12px 0px var(--copp-subtle) !important;
-    transform: rotate(-1deg); /* Rotación orgánica inicial */
-}
-
-.copp-diary-entry.archive-card:hover {
-    transform: rotate(0deg) translate(-5px, -5px) !important;
-    box-shadow: 20px 20px 0px rgba(160, 83, 94, 0.1) !important;
-}
-
 /* animacion */
 #copp-button {
   position: fixed;
@@ -1844,9 +1814,9 @@ body {
     font-family: var(--font-copp-title);
     animation-name: copp-fall;
     animation-timing-function: linear;
-    z-index: 2500; /* Por encima del overlay del hero */
+    z-index: 2500;
     white-space: nowrap;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2); /* Un leve brillo */
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2); 
 }
 
 .copp-falling-object.is-text {
@@ -1862,7 +1832,7 @@ body {
         opacity: 0;
     }
     15% {
-        opacity: 0.7; /* Se vuelve visible rápido */
+        opacity: 0.7;
     }
     85% {
         opacity: 0.7;
@@ -1877,7 +1847,7 @@ body {
 .copp-nav {
     mix-blend-mode: normal !important;
     backdrop-filter: blur(6px);
-    position: fixed; /* o sticky */
+    position: fixed;
     z-index: 1000;
     padding: 5%;
 
@@ -1896,15 +1866,14 @@ body {
 }
 .copp-nav.nav-scrolled {
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(160, 83, 94, 0.1); /* Línea sutil en rojo Coppola */
+    border-bottom: 1px solid rgba(160, 83, 94, 0.1); 
 }
 
 .copp-nav.nav-scrolled .brand a,
 .copp-nav.nav-scrolled nav a {
-    color: var(--copp-text) !important; /* Tu color oscuro #534548 */
+    color: var(--copp-text) !important;
 }
 
-/* Hover en modo scrolled */
 .copp-nav.nav-scrolled nav a:hover {
     color: var(--copp-red) !important;
 }
@@ -2009,11 +1978,6 @@ body {
     display: flex;
     justify-content: center;
 }
-.copp-narrative-section h3, 
-.copp-narrative-section p, 
-.copp-narrative-section strong {
-    background-color: #FBF6E9 !important;
-}
 
 /* --- SECCIONES QUE SÍ CAMBIAN (DINÁMICAS) --- */
 .copp-palette-section,
@@ -2079,7 +2043,7 @@ body {
 /* --- DIARIO VISUAL SOFIA COPPOLA (EQUILIBRADO) --- */
 
 .copp-diary-container {
-    max-width: 1200px; /* Tamaño amplio para que no sean pequeñas */
+    max-width: 1200px;
     margin: 0 auto;
     padding-bottom: 2%;
 
@@ -2094,33 +2058,24 @@ body {
 
 .copp-diary-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 arriba, 3 abajo */
-    gap: 45px 35px; /* Espaciado generoso */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 35px;
 }
 
 .copp-diary-entry.archive-card {
-    background: #fff;
-    padding: 18px; /* Marco más presente */
-    border: 1px solid rgba(83, 69, 72, 0.1);
+    padding: 18px;
     position: relative;
-    
-    /* Estado inicial: sombra plana sutil */
-    box-shadow: 4px 4px 0px rgba(83, 69, 72, 0.05);
-    
     transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
     cursor: pointer;
+    background: #fff !important;
+    border: 1px solid rgba(83, 69, 72, 0.1) !important;
+    box-shadow: 12px 12px 0px var(--copp-subtle) !important;
+    transform: rotate(-1deg);
 }
 
-
-/* HOVER ESTILO WES (POP 3D) */
 .copp-diary-entry.archive-card:hover {
-    /* Se levanta hacia la izquierda y arriba */
-    transform: translate(-10px, -10px); 
-    
-    /* DOBLE SOMBRA LATERAL:
-       1. Una sombra sólida (estilo Wes) para dar grosor
-       2. Una sombra difusa para dar profundidad real
-    */
+    transform: rotate(0deg) translate(-5px, -5px) !important;
+
     box-shadow: 
         10px 10px 0px rgba(160, 83, 94, 0.1), 
         20px 20px 30px rgba(83, 69, 72, 0.12);
@@ -2131,9 +2086,9 @@ body {
 .copp-photo-frame {
     position: relative;
     width: 100%;
-    padding-bottom: 65%; /* Define la altura proporcional (Aspect Ratio) */
+    padding-bottom: 65%;
     overflow: hidden;
-    background: #f0f0f0; /* Color de carga */
+    background: #f0f0f0;
 }
 
 .copp-photo-frame img {
@@ -2141,7 +2096,6 @@ body {
     object-fit: cover;
     width: 100%;
     height: 100%;
-    object-fit: cover;
     display: block;
     filter: saturate(0.9);
     transition: transform 1.5s ease;
@@ -2159,7 +2113,7 @@ body {
 .entry-meta h4 {
     font-family: var(--font-copp-subtitle);
     font-style: italic;
-    font-size: 1.25rem; /* Título con más peso */
+    font-size: 1.25rem;
     color: var(--copp-text);
     margin: 0 0 10px 0;
 }
@@ -2172,18 +2126,18 @@ body {
     line-height: 1.6;
 }
 
-/* Animación de entrada por orden */
 .copp-diary-entry {
     opacity: 0;
     transform: translateY(20px);
     animation: diaryReveal 0.8s ease forwards;
 }
 
+
+ 
 @keyframes diaryReveal {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Delays */
 .copp-diary-entry:nth-child(1) { animation-delay: 0.1s; }
 .copp-diary-entry:nth-child(2) { animation-delay: 0.2s; }
 .copp-diary-entry:nth-child(3) { animation-delay: 0.3s; }
@@ -2343,7 +2297,6 @@ copp-palette-sub{
     padding: 3em;
 }
 
-/* Títulos decorados */
 .copp-heading.centered {
     text-align: center;
     display: block;
@@ -2351,7 +2304,6 @@ copp-palette-sub{
     font-style: italic;
     font-size: 2.2rem;
     position: relative;
-
 }
 
 .copp-ticket-wrapper {
@@ -2362,7 +2314,8 @@ copp-palette-sub{
 }
 
 .copp-ticket-scroller {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
     gap: 30px;
     overflow-x: auto;
     padding: 20px 5%;
@@ -2371,7 +2324,7 @@ copp-palette-sub{
 }
 
 .copp-ticket-scroller::-webkit-scrollbar {
-    height: 3px; /* Muy fina */
+    height: 3px;
     display: block !important;
 }
 
@@ -2387,8 +2340,8 @@ copp-palette-sub{
 }
 
 .copp-movie-ticket {
-    flex-shrink: 0;
-    min-width: 280px;
+    flex-shrink: unset;
+    min-width: unset;
     height: 150px;
     background-color: #FBF6E9;
     border: 1px solid rgba(83, 69, 72, 0.2);
@@ -2402,7 +2355,6 @@ copp-palette-sub{
     box-shadow: 5px 5px 0px var(--copp-subtle);
 }
 
-/* Efecto de perforación de ticket */
 .copp-movie-ticket::before,
 .copp-movie-ticket::after {
     content: '';
@@ -2492,53 +2444,44 @@ copp-palette-sub{
 }
 
 
-/* --- SISTEMA RESPONSIVE COPPOLA --- */
-/* --- MEDIA QUERIES SISTEMATIZADOS --- */
+/* --- MEDIA QUERIES COPPOLA --- */
 
-/* Tablets y Laptops pequeñas */
 @media (max-width: 1024px) {
     .copp-diary-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columnas en diario */
+        grid-template-columns: repeat(2, 1fr); 
     }
 }
 
-/* Dispositivos Móviles (Smartphones) */
 @media (max-width: 768px) {
-    /* 1. Ajuste de las líneas laterales de la sección */
     .copp-diary-section {
-        margin: 0 15px; /* Menos margen lateral en móvil */
+        margin: 0 15px; 
         padding: 60px 0;
     }
 
-    /* 2. Filmografía: Uno debajo de otro */
     .copp-ticket-scroller {
-        grid-template-columns: 1fr; /* Una sola columna */
+        grid-template-columns: 1fr; 
         gap: 25px;
     }
 
     .copp-movie-ticket {
-        min-width: unset; /* Quitamos el ancho mínimo previo */
+        min-width: unset;
         height: 140px;
     }
 
-    /* 3. Diario Visual: Una sola columna */
     .copp-diary-grid {
         grid-template-columns: 1fr;
         gap: 30px;
     }
 
-    /* 4. Títulos */
     .copp-heading.centered {
         font-size: 1.8rem;
     }
     
-    /* 5. Nav (Separación responsive) */
     .copp-nav {
         padding: 20px 25px !important;
     }
 }
 
-/* Móviles muy pequeños */
 @media (max-width: 480px) {
     .copp-movie-ticket {
         padding: 15px;
