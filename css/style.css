@@ -381,6 +381,69 @@ body {
     visibility: hidden;
 }
 
+/* --- WELCOME MODAL ESPECÍFICO --- */
+.welcome-card {
+    max-width: 550px !important;
+    padding: 60px !important;
+    text-align: center;
+}
+
+.welcome-title {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 40px;
+    line-height: 1.2;
+}
+
+.welcome-text {
+    font-family: var(--font-sans);
+    color: #888;
+    line-height: 1.8;
+    font-size: 0.95rem;
+    margin-bottom: 40px;
+}
+
+.welcome-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.welcome-btn {
+    width: 100%;
+    margin-top: 0 !important;
+    background: var(--white) !important;
+    color: #000 !important;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.welcome-btn:hover {
+    background: transparent !important;
+    color: var(--white) !important;
+}
+
+.btn-skip {
+    background: none;
+    border: none;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.7rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-skip:hover {
+    color: var(--white);
+}
+
+/* Animación de aparición */
+.modal-overlay.open {
+    display: flex !important; /* Asegura que se vea al activarse */
+}
 
 /* --- 2. TICKER / MARQUESINA --- */
 .ticker-wrap {
@@ -1789,7 +1852,7 @@ body {
     font-family: var(--font-copp-title);
     animation-name: copp-fall;
     animation-timing-function: linear;
-    z-index: 2500; 
+    z-index: 2500;
     white-space: nowrap;
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.2); 
 }
