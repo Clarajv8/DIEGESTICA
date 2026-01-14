@@ -530,6 +530,22 @@ $(document).ready(function() {
     // END AMENABAR
 
     // COPPOLA
+
+    window.addEventListener('scroll', function() {
+    const nav = document.querySelector('.copp-nav');
+    const hero = document.querySelector('.copp-hero');
+    
+    // Calculamos la altura del hero para que el cambio sea exacto
+    if (hero) {
+        const heroHeight = hero.offsetHeight;
+        // Cambia justo cuando el scroll llega al final del hero (puedes restar 80px si quieres que sea un poco antes)
+        if (window.scrollY >= heroHeight - 80) {
+            nav.classList.add('nav-scrolled');
+        } else {
+            nav.classList.remove('nav-scrolled');
+        }
+    }
+});
     // Animacion
    const coppContainer = document.getElementById("copp-container");
    const coppButton = document.getElementById("copp-button");
