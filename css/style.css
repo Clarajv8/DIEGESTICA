@@ -532,7 +532,7 @@ body {
 .wes-nav nav a.nav-btn:hover {
     transform: scale(1.1) translateY(-2px);
     color: var(--wes-static-cream) !important; 
-    box-shadow: 0 5px 0px var(--wes-accent);
+    box-shadow: 4px 5px 0px var(--wes-accent);
 }
 
 .wes-nav .brand a {
@@ -768,7 +768,6 @@ body {
 
 .prop-badge {
     position: absolute;
-    top: -15px; 
     left: 50%;
     transform: translateX(-50%);
     background: var(--wes-static-brown);
@@ -782,9 +781,7 @@ body {
 }
 
 .prop-image-frame {
-    border: 1px solid #ddd;
     padding: 10px;
-    background: #f9f9f9;
     margin-bottom: 20px;
     position: relative;
     overflow: hidden;
@@ -839,7 +836,6 @@ body {
     line-height: 1.5;
 }
 
-/* PALETTE SECTION */
 .palette-section {
     transition: background-color 0.5s ease;
 }
@@ -1014,7 +1010,6 @@ body {
     transform: translateY(0);
 }
 
-/* FOOTER */
 .wes-footer {
     text-align: center;
     padding: 60px 20px;
