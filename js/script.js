@@ -190,6 +190,31 @@ $(document).ready(function() {
         });
     }
 
+// ==========================================
+// 5. LÓGICA DEL WELCOME POPUP (SOLO HOME)
+// ==========================================
+
+if (!sessionStorage.getItem('welcomeShown')) {
+    setTimeout(function() {
+        $('#welcome-modal').addClass('open');
+    }, 1200);
+}
+
+function closeWelcome() {
+    $('#welcome-modal').removeClass('open');
+    sessionStorage.setItem('welcomeShown', 'true');
+}
+
+$('#close-welcome, #enter-site').on('click', function() {
+    closeWelcome();
+});
+
+$('#welcome-modal').on('click', function(e) {
+    if ($(e.target).is('#welcome-modal')) {
+        closeWelcome();
+    }
+});
+
 /* =========================================
        === WES ANDERSON PAGE JS ===
        ========================================= */
