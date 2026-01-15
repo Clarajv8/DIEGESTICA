@@ -365,7 +365,7 @@ $('#welcome-modal').on('click', function(e) {
             dvObserver.observe(this);
         });
 
-        // Interacción de paleta de colores (similar a Wes)
+        // Interacción de paleta de colores
         $('.color-strip').on('click', function() {
             const $strip = $(this);
             const bgColor = $strip.data('color');
@@ -386,6 +386,78 @@ $('#welcome-modal').on('click', function(e) {
 
             $('#copy-feedback').text('¡Atmósfera Actualizada!').fadeIn().delay(2000).fadeOut();
         });
+
+        // Hover en el hero para cambiar imagen
+        $('.dv-hero-content').hover(function() {
+            $('.dv-bg--base').stop().animate({ opacity: 0 }, 500);
+            $('.dv-bg--hover').stop().animate({ opacity: 1 }, 500);
+        }, function() {
+            $('.dv-bg--base').stop().animate({ opacity: 1 }, 500);
+            $('.dv-bg--hover').stop().animate({ opacity: 0 }, 500);
+        });
+
+        // VILLENEUVE RAIN SYSTEM
+        const $dvContainer = $("#dv-container");
+        const $dvButton = $("#dv-button");
+        const dvObjects = [
+            "ARRIVAL", "DUNE", "BLADE RUNNER", "INCENDIES",
+            "👁️", "⏳", "🤖","😶‍🌫️",
+            "INFINITE", "SCALE", "BRUTAL", "EPIC",
+            "DESERT", "POWER", "TENSION", "◇", "⌁", "◎",
+            "🌪️", "🏜️", "⚡", "🌌", "💫", "🔥"
+        ];
+
+        function dvCreateFallingObject() {
+            if ($dvContainer.length === 0) return;
+
+            const el = document.createElement("div");
+            el.classList.add("dv-falling-object");
+
+            const content = dvObjects[Math.floor(Math.random() * dvObjects.length)];
+            el.innerText = content;
+
+            if (content.length > 2) {
+                el.classList.add("is-text");
+            } else {
+                el.classList.add("is-emoji");
+            }
+
+            el.style.left = Math.random() * 98 + "vw";
+            const isEmoji = el.classList.contains("is-emoji");
+            const size = isEmoji ? (Math.random() * 16 + 24) : (Math.random() * 10 + 16);
+            el.style.fontSize = size + "px";
+
+            const duration = Math.random() * 8 + 5;
+            el.style.animationDuration = duration + "s";
+
+            const startRotation = Math.random() * 360;
+            el.style.setProperty('--start-rotation', `${startRotation}deg`);
+
+            const spinRotation = (Math.random() > 0.5 ? 360 : -360) + startRotation;
+            el.style.setProperty('--spin-rotation', `${spinRotation}deg`);
+
+            el.style.opacity = Math.random() * 0.4 + 0.4;
+
+            $dvContainer[0].appendChild(el);
+
+            setTimeout(() => {
+                el.remove();
+            }, duration * 1000);
+        }
+
+        function dvStartRain(amount = 30) {
+            for (let i = 0; i < amount; i++) {
+                setTimeout(dvCreateFallingObject, i * 80);
+            }
+        }
+
+        if ($dvButton.length) {
+            $dvButton.on("click", function() {
+                dvStartRain(50);
+            });
+        }
+
+        dvStartRain(20);
     }
     // FIN DE VILLENEUVE
 
@@ -686,7 +758,7 @@ $('#welcome-modal').on('click', function(e) {
 
     coppStartRain(25);
 
-    // Paletta Interactiva
+    // Paleta Interactiva
     $(document).ready(function() {
     if ($('.copp-page').length) {
         $('.copp-color-strip').on('click', function () {
@@ -721,41 +793,6 @@ $('#welcome-modal').on('click', function(e) {
     }
 });
 
-
-    // VILLENEUVE
-    if ($('.villeneuve-page').length) {
-        console.log("Modo Denis Villeneuve: Activado. Preparando escala brutalista.");
-
-        const dvObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, { threshold: 0.2 });
-
-        $('.reveal-dv').each(function() {
-            dvObserver.observe(this);
-        });
-
-        // Interacción del slider de escala
-        $('#scale-range').on('input', function() {
-            const value = $(this).val();
-            $('#scale-value').text(value);
-            // Aquí podrías añadir efectos visuales, como cambiar el tamaño de elementos
-            $('.dv-interactive-container').css('transform', `scale(${1 + value / 100})`);
-        });
-
-        // Hover en el hero para cambiar imagen
-        $('.dv-hero-content').hover(function() {
-            $('.dv-bg--base').stop().animate({ opacity: 0 }, 500);
-            $('.dv-bg--hover').stop().animate({ opacity: 1 }, 500);
-        }, function() {
-            $('.dv-bg--base').stop().animate({ opacity: 1 }, 500);
-            $('.dv-bg--hover').stop().animate({ opacity: 0 }, 500);
-        });
-    }
-    // FIN DE VILLENEUVE
 
     console.log("Sistema jQuery cargado correctamente.");
 });
