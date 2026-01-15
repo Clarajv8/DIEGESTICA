@@ -1161,7 +1161,6 @@ body {
     animation-timing-function: linear;
 }
 
-/* Animación de caída estilo Wes (más directa) */
 @keyframes wes-fall {
     0% {
         transform: translateY(-10vh) rotate(var(--start-rotation));
@@ -1179,7 +1178,6 @@ body {
     }
 }
 
-/* ANIMACIONES */
 .anime-pop-in {
     animation: bouncyReveal 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
     opacity: 0;
