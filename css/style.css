@@ -687,6 +687,29 @@ body {
     font-weight: 600;
 }
 
+.wes-back-home-btn {
+    display: inline-block;
+    padding: 30px 45px;
+    background-color: transparent;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    text-decoration: none;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    border-radius: 0;
+    color: var(--wes-text);
+}
+
+.wes-back-home-btn:hover {
+    color: #FBF6E9;
+    font-weight: bolder;
+    background-color: var(--wes-static-brown);
+    letter-spacing: 6px;
+    transform: translateY(-3px);
+    box-shadow: 8px 8px 0px var(--wes-accent);
+}
+
 .wes-hero {
     min-height: 100vh;
     display: flex;
@@ -697,7 +720,7 @@ body {
     
     padding-top: 120px; 
     padding-bottom: 60px;
-    background-image: url('../media/img-wes/1wes.jpg'); 
+    background-image: url('../media/img-wes/1wes.WEBP'); 
     background-size: cover;
     background-position: center;
     
