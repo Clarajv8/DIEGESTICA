@@ -293,6 +293,58 @@ $('#welcome-modal').on('click', function(e) {
         });
     }
 
+    /* WES ANDERSON RAIN SYSTEM */
+    if ($('.wes-anderson-page').length) {
+        const $wesContainer = $("#wes-container");
+        const $wesButton = $("#wes-rain-button");
+        const wesObjects = [
+            "🦊", "⚓️", "📷", "🎾", "🎒", "🔭", "🛶", "🐕", "🍰", "🚂", 
+            "SYMMETRY", "ADMIT ONE", "ZISSOU", "TENENBAUM", "1965", 
+            "KHAKI", "PROTAGONIST", "DIORAMA", "I BITE", "❖", "✦"
+        ];
+
+        function wesCreateFallingObject() {
+            if (!$wesContainer.length) return;
+
+            const content = wesObjects[Math.floor(Math.random() * wesObjects.length)];
+            const isEmoji = content.length <= 2;
+            
+            const $el = $("<div></div>")
+                .addClass("wes-falling-object")
+                .text(content)
+                .css({
+                    left: Math.random() * 95 + "vw",
+                    fontSize: isEmoji ? (Math.random() * 20 + 25) + "px" : (Math.random() * 5 + 12) + "px",
+                    color: isEmoji ? "inherit" : (Math.random() > 0.5 ? "var(--wes-red)" : "var(--wes-static-brown)"),
+                    animationDuration: (Math.random() * 3 + 3) + "s",
+                    opacity: Math.random() * 0.7 + 0.3
+                });
+
+            const startRotation = Math.random() * 360;
+            const spinRotation = (Math.random() > 0.5 ? 180 : -180) + startRotation;
+            $el[0].style.setProperty('--start-rotation', `${startRotation}deg`);
+            $el[0].style.setProperty('--spin-rotation', `${spinRotation}deg`);
+
+            $wesContainer.append($el);
+
+            setTimeout(() => {
+                $el.remove();
+            }, 6000);
+        }
+
+        function wesStartRain(amount = 20) {
+            for (let i = 0; i < amount; i++) {
+                setTimeout(wesCreateFallingObject, i * 150);
+            }
+        }
+        
+        $wesButton.on("click", function() {
+            wesStartRain(40);
+        });
+
+        setTimeout(() => wesStartRain(15), 500);
+    }
+
     /* =========================================
        === WES ANDERSON PAGE JS END ===
        ========================================= */
