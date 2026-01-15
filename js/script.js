@@ -79,25 +79,25 @@ $(document).ready(function() {
         coppola: {
             name: "Sofia Coppola",
             desc: "Tu mundo es íntimo y melancólico. Encuentras belleza en el aislamiento y los silencios.",
-            img: "media/img/Sofia-Coppola-Cara.jpg",
+            img: "media/img/Sofia-Coppola-Cara.WEBP",
             link: "sofia-coppola.html"
         },
         anderson: {
             name: "Wes Anderson",
             desc: "Buscas el orden en el caos. Tu vida es una paleta de colores pastel y simetría perfecta.",
-            img: "media/img/Wes-Anderson-Cara.jpg",
+            img: "media/img/Wes-Anderson-Cara.WEBP",
             link: "wes-anderson.html"
         },
         villeneuve: {
             name: "Denis Villeneuve",
             desc: "Te atrae lo monumental y lo brutalista. Tu atmósfera es tensa, inmensa y visualmente impactante.",
-            img: "media/img/Denise-Villenueve-Cara.jpg",
+            img: "media/img/Denise-Villenueve-Cara.WEBP",
             link: "denis-villeneuve.html"
         },
         amenabar: {
             name: "Alejandro Amenábar",
             desc: "Vives entre luces y sombras. El misterio y la tensión psicológica definen tu espacio.",
-            img: "media/img/Alejandro-Amenabar-Cara.jpg",
+            img: "media/img/Alejandro-Amenabar-Cara.WEBP",
             link: "alejandro-amenabar.html"
         }
     };
