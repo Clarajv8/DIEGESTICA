@@ -440,9 +440,8 @@ body {
     color: var(--white);
 }
 
-/* Animación de aparición */
 .modal-overlay.open {
-    display: flex !important; /* Asegura que se vea al activarse */
+    display: flex !important; 
 }
 
 /* --- 2. TICKER / MARQUESINA --- */
@@ -1109,6 +1108,75 @@ body {
     width: 100%;
     opacity: 0.6;
     color: var(--wes-static-brown);
+}
+
+/* === WES ANDERSON RAIN SYSTEM === */
+#wes-rain-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 3000;
+    background: var(--wes-bg-secondary);
+    color: var(--wes-static-brown);
+    border: 2px solid var(--wes-static-brown);
+    padding: 12px 24px;
+    font-family: var(--font-wes-title);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    box-shadow: 6px 6px 0px var(--wes-mustard);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#wes-rain-button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0px var(--wes-red);
+    background: #fff;
+}
+
+#wes-rain-button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px var(--wes-red);
+}
+
+#wes-fallingElementsContainer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2500;
+}
+
+.wes-falling-object {
+    position: fixed;
+    top: -50px;
+    pointer-events: none;
+    z-index: 2500;
+    white-space: nowrap;
+    font-family: var(--font-wes-title);
+    font-weight: 900;
+    text-transform: uppercase;
+    animation-name: wes-fall;
+    animation-timing-function: linear;
+}
+
+/* Animación de caída estilo Wes (más directa) */
+@keyframes wes-fall {
+    0% {
+        transform: translateY(-10vh) rotate(var(--start-rotation));
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) rotate(var(--spin-rotation));
+        opacity: 0;
+    }
 }
 
 /* ANIMACIONES */
