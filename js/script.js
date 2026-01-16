@@ -685,6 +685,7 @@ $('#welcome-modal').on('click', function(e) {
         "🗝️", "☠️", "👁️", "📽️","🌙", "🩸", "⁉️"
     ];
 
+    // lluvia
     function aaCreateFallingObject() {
         if (!$aaContainer.length) return;
 
