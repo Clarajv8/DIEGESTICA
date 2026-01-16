@@ -682,9 +682,9 @@ $('#welcome-modal').on('click', function(e) {
     const $aaButton = $("#aa-rain-button");
 
     const aaObjects = [
-        "SILENCIO",
-        "¿REAL?", "NO MIRES", "RESPIRA",
-        "🗝️", "☠️", "👁️", "📽️","🌙", "🩸", "⁉️"
+        "CLAROSCURO", "SUSPENSE", "MISTERIO", "REALIDAD", 
+        "¿QUIÉN?", "VERDAD", "MIEDO", "SOMBRA", "RESPIRA",
+        "🎬", "🔐", "👻", "⚰️", "🕯️", "🌑", "💀", "🔍", "🎭", "⏳", "🚪"
     ];
 
     function aaCreateFallingObject() {
