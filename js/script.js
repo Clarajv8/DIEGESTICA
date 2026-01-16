@@ -675,6 +675,62 @@ $('#welcome-modal').on('click', function(e) {
             $('.aa-bg .aa-prop-card').removeClass('is-active');
         });
     }
+    if ($('.amenabar-page').length) {
+    const $aaContainer = $("#aa-container");
+    const $aaButton = $("#aa-rain-button");
+
+    const aaObjects = [
+        "SILENCIO",
+        "¿REAL?", "NO MIRES", "RESPIRA",
+        "🗝️", "☠️", "👁️", "📽️","🌙", "🩸", "⁉️"
+    ];
+
+    function aaCreateFallingObject() {
+        if (!$aaContainer.length) return;
+
+        const content = aaObjects[Math.floor(Math.random() * aaObjects.length)];
+        const isEmojiLike = content.length <= 3 && /[🗝🕯🚪🪞👁⏳🌫🔇⟡⦿◻◼]/.test(content);
+
+        const $el = $("<div></div>")
+        .addClass("aa-falling-object")
+        .addClass(isEmojiLike ? "is-emoji" : "is-text")
+        .text(content)
+        .css({
+            left: (Math.random() * 96) + "vw",
+            fontSize: isEmojiLike ? (Math.random() * 18 + 20) + "px" : (Math.random() * 7 + 12) + "px",
+            color: isEmojiLike
+            ? "rgba(255,248,209,0.75)"
+            : (Math.random() > 0.66 ? "rgba(255,248,209,0.75)" : (Math.random() > 0.5 ? "#550909" : "#3c7499")),
+            animationDuration: (Math.random() * 3.5 + 3.5) + "s",
+            opacity: Math.random() * 0.45 + 0.35
+        });
+
+        const startRotation = Math.random() * 360;
+        const spinRotation = (Math.random() > 0.5 ? 220 : -220) + startRotation;
+        $el[0].style.setProperty('--start-rotation', `${startRotation}deg`);
+        $el[0].style.setProperty('--spin-rotation', `${spinRotation}deg`);
+
+        $aaContainer.append($el);
+
+        const removeAfter = (parseFloat($el.css("animation-duration")) || 6) * 1000 + 500;
+        setTimeout(() => $el.remove(), removeAfter);
+    }
+
+    function aaStartRain(amount = 22) {
+        for (let i = 0; i < amount; i++) {
+        setTimeout(aaCreateFallingObject, i * 130);
+        }
+    }
+
+    if ($aaButton.length) {
+        $aaButton.on("click", function() {
+        aaStartRain(40);
+        });
+    }
+
+    setTimeout(() => aaStartRain(16), 550);
+    }
+
 
     // END AMENABAR
 
