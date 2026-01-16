@@ -675,6 +675,8 @@ $('#welcome-modal').on('click', function(e) {
             $('.aa-bg .aa-prop-card').removeClass('is-active');
         });
     }
+
+        // lluvia
     if ($('.amenabar-page').length) {
     const $aaContainer = $("#aa-container");
     const $aaButton = $("#aa-rain-button");
