@@ -91,7 +91,7 @@ $(document).ready(function() {
         villeneuve: {
             name: "Denis Villeneuve",
             desc: "Te atrae lo monumental y lo brutalista. Tu atmósfera es tensa, inmensa y visualmente impactante.",
-            img: "assets/img/Denise-Villenueve-Cara.WEBP",
+            img: "assets/img/Denise-Villeneuve-Cara.WEBP",
             link: "denis-villeneuve.html"
         },
         amenabar: {
